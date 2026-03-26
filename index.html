@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gate — Expression-Gated Consciousness</title>
+<meta name="description" content="Why you know more than you say — and the science behind it. Discover the EGC framework and find your expression type.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-card: #1a2235;
+    --bg-card-hover: #1f2a40;
+    --teal: #2dd4bf;
+    --teal-dim: #14b8a6;
+    --teal-glow: rgba(45, 212, 191, 0.15);
+    --purple: #a78bfa;
+    --purple-dim: #8b5cf6;
+    --purple-glow: rgba(167, 139, 250, 0.15);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #1e293b;
+    --border-focus: #334155;
+    --success: #34d399;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--teal-dim), var(--teal)) !important;
+    color: var(--bg-primary) !important;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(45, 212, 191, 0.3);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, var(--teal-glow) 0%, var(--purple-glow) 35%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--bg-primary), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+  }
+
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--teal);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--teal) 60%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 16px 36px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--teal-dim), var(--teal));
+    color: var(--bg-primary);
+    font-weight: 600;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(45, 212, 191, 0.35);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-focus);
+  }
+
+  .btn-secondary:hover {
+    background: var(--bg-card);
+    border-color: var(--text-muted);
+  }
+
+  .btn-purple {
+    background: linear-gradient(135deg, var(--purple-dim), var(--purple));
+    color: var(--bg-primary);
+    font-weight: 600;
+  }
+
+  .btn-purple:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(167, 139, 250, 0.35);
+  }
+
+  /* ── Sections ── */
+  section {
+    padding: 100px 24px;
+  }
+
+  .section-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px;
+    line-height: 1.25;
+  }
+
+  /* ── About EGC ── */
+  #about {
+    border-top: 1px solid var(--border);
+  }
+
+  .about-content {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .about-content p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .about-content p:last-child { margin-bottom: 0; }
+
+  .about-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .equation-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .equation {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--teal);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+
+  .equation-caption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ── Three Types ── */
+  #types {
+    border-top: 1px solid var(--border);
+  }
+
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .type-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+    text-align: center;
+  }
+
+  .type-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .type-card.teal:hover { border-color: var(--teal); }
+  .type-card.purple:hover { border-color: var(--purple); }
+  .type-card.red:hover { border-color: #f87171; }
+
+  .type-card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 20px;
+  }
+
+  .type-card.teal .type-card-icon {
+    background: var(--teal-glow);
+    border: 2px solid var(--teal);
+    color: var(--teal);
+  }
+
+  .type-card.purple .type-card-icon {
+    background: var(--purple-glow);
+    border: 2px solid var(--purple);
+    color: var(--purple);
+  }
+
+  .type-card.red .type-card-icon {
+    background: rgba(248, 113, 113, 0.12);
+    border: 2px solid #f87171;
+    color: #f87171;
+  }
+
+  .type-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+
+  .type-card.teal h3 { color: var(--teal); }
+  .type-card.purple h3 { color: var(--purple); }
+  .type-card.red h3 { color: #f87171; }
+
+  .type-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .types-cta {
+    text-align: center;
+  }
+
+  /* ── Research ── */
+  #research {
+    border-top: 1px solid var(--border);
+  }
+
+  .research-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .research-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .research-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-focus);
+  }
+
+  .research-icon {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+  }
+
+  .research-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+  }
+
+  .research-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .research-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--teal);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .research-card a:hover { gap: 10px; }
+  .research-card a::after { content: '\2192'; }
+
+  /* ── Email Capture ── */
+  #subscribe {
+    border-top: 1px solid var(--border);
+  }
+
+  .subscribe-box {
+    max-width: 560px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .subscribe-box::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--purple-glow) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .subscribe-box > * { position: relative; z-index: 1; }
+
+  .subscribe-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .subscribe-box > p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .email-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .email-form input {
+    flex: 1;
+    padding: 14px 18px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .email-form input::placeholder { color: var(--text-muted); }
+
+  .email-form input:focus {
+    border-color: var(--purple-dim);
+    box-shadow: 0 0 0 3px var(--purple-glow);
+  }
+
+  .email-form button {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--purple-dim), var(--purple));
+    border: none;
+    border-radius: 10px;
+    color: var(--bg-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  .email-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(167, 139, 250, 0.3);
+  }
+
+  .subscribe-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .subscribe-success {
+    display: none;
+    color: var(--success);
+    font-size: 0.92rem;
+    margin-top: 12px;
+  }
+
+  .subscribe-success.visible { display: block; }
+
+  /* ── Press ── */
+  #press {
+    border-top: 1px solid var(--border);
+  }
+
+  .press-grid {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    opacity: 0.3;
+  }
+
+  .press-item {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  footer a {
+    color: var(--teal);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  footer a:hover { color: var(--text-primary); }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  /* ── Mobile Nav ── */
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 16px 20px;
+      gap: 16px;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .mobile-toggle { display: block; }
+
+    .hero { padding: 100px 20px 60px; min-height: auto; }
+
+    section { padding: 60px 20px; }
+
+    .email-form { flex-direction: column; }
+
+    .subscribe-box { padding: 32px 24px; }
+
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 320px; }
+  }
+
+  /* ── Fade-in Animation ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <a href="#" class="nav-logo">The <span>Gate</span></a>
+  <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle menu">&#9776;</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#types">Expression Types</a>
+    <a href="#research">Research</a>
+    <a href="egc_assessment.html" class="nav-cta">Take the Assessment</a>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Expression-Gated Consciousness</div>
+    <h1>The Gate</h1>
+    <p class="hero-subtitle">Why you know more than you say &mdash; and the science behind it</p>
+    <div class="hero-buttons">
+      <a href="egc_assessment.html" class="btn btn-primary">Take the Assessment</a>
+      <a href="#about" class="btn btn-secondary">Learn More</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section id="about">
+  <div class="section-container">
+    <div class="section-label">The Framework</div>
+    <h2 class="section-title">What is Expression-Gated Consciousness?</h2>
+    <div class="about-content fade-in">
+      <p>You've felt it. The moment you sit down to say something important and the words won't come. The depth is there &mdash; you can feel it &mdash; but something between knowing and expressing acts like a gate. Under pressure, under observation, under the weight of being judged, that gate narrows. <strong>Expression-Gated Consciousness (EGC)</strong> is a formal framework for understanding why.</p>
+      <p>EGC introduces a <strong>resistance term</strong> into the equation of consciousness &mdash; something that Integrated Information Theory, Global Workspace Theory, and panpsychism all leave out. The core insight: both extremes of conviction suppress depth access, and the resistance you feel when trying to express your deepest knowledge is not a failure of articulation. It is an active gate that modulates what the universe can know through you.</p>
+      <p>The framework predicts three distinct expression types &mdash; patterns that emerge when people write under low-pressure versus high-pressure conditions. These types are measurable, classifiable, and reveal something fundamental about how each person's mind gates its own depth.</p>
+
+      <div class="equation-block">
+        <div class="equation">&Psi;(t) = &Phi; &middot; g(K(t)) &middot; T(t) &middot; (1 &minus; r(t))</div>
+        <div class="equation-caption">where g(K) = 4K(1&minus;K) &mdash; the accessibility gate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ THREE TYPES ══════════════ -->
+<section id="types">
+  <div class="section-container">
+    <div class="section-label">The Three Types</div>
+    <h2 class="section-title">How does your gate respond to pressure?</h2>
+    <div class="types-grid fade-in">
+      <div class="type-card teal">
+        <div class="type-card-icon">&#9673;</div>
+        <h3>Compressor</h3>
+        <p>Volume drops, quality holds. Under pressure, you say less &mdash; but what you say maintains its depth and precision. The gate narrows, but the signal stays clean. The most common type.</p>
+      </div>
+      <div class="type-card purple">
+        <div class="type-card-icon">&#10022;</div>
+        <h3>Expander</h3>
+        <p>Pressure opens the gate. Your volume and richness increase when the stakes rise. You thrive under evaluation. The rarest expression type &mdash; pressure becomes fuel for expression.</p>
+      </div>
+      <div class="type-card red">
+        <div class="type-card-icon">&#9826;</div>
+        <h3>Suppressor</h3>
+        <p>Both volume and quality decline under pressure. The resistance term dominates. This is not a weakness &mdash; it means your deepest insights emerge in low-pressure environments. Understanding the pattern is the key.</p>
+      </div>
+    </div>
+    <div class="types-cta fade-in">
+      <a href="egc_assessment.html" class="btn btn-primary">Discover Your Type</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ RESEARCH ══════════════ -->
+<section id="research">
+  <div class="section-container">
+    <div class="section-label">The Research</div>
+    <h2 class="section-title">Read the science</h2>
+    <div class="research-cards fade-in">
+      <div class="research-card">
+        <div class="research-icon">&#128220;</div>
+        <h3>PsyArXiv Preprint</h3>
+        <p>The formal EGC paper. Mathematical framework, falsifiable predictions, experimental protocol, and comparisons against IIT, GWT, panpsychism, and Orch-OR.</p>
+        <a href="https://osf.io/preprints/psyarxiv/e6jzf_v1" target="_blank" rel="noopener">Read on PsyArXiv</a>
+      </div>
+      <div class="research-card">
+        <div class="research-icon">&#128202;</div>
+        <h3>Live Study</h3>
+        <p>The ongoing EGC expression type study. Two writing tasks measuring how evaluative pressure modulates expressive output. Data collection in progress toward formal journal submission.</p>
+        <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">View the study</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SUBSCRIBE ══════════════ -->
+<section id="subscribe">
+  <div class="section-container">
+    <div class="subscribe-box fade-in">
+      <h3>Stay in the loop</h3>
+      <p>Get notified when we publish new findings, hit study milestones, or release the journal paper.</p>
+      <form class="email-form" onsubmit="handleSubscribe(event)">
+        <input type="email" id="emailInput" placeholder="your@email.com" required autocomplete="email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="subscribe-note">No spam. Unsubscribe anytime.</p>
+      <p class="subscribe-success" id="subscribeSuccess">You're in. We'll be in touch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PRESS ══════════════ -->
+<section id="press">
+  <div class="section-container">
+    <div class="section-label">As Seen In</div>
+    <h2 class="section-title" style="margin-bottom:32px;">Coming soon</h2>
+    <div class="press-grid fade-in">
+      <div class="press-item">Nature</div>
+      <div class="press-item">Frontiers</div>
+      <div class="press-item">Aeon</div>
+      <div class="press-item">Quanta</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="egc_assessment.html">Take the Assessment</a>
+      <a href="https://osf.io/preprints/psyarxiv/e6jzf_v1" target="_blank" rel="noopener">PsyArXiv</a>
+      <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">Live Study</a>
+    </div>
+    <p>Bryan Leonard &amp; Brandyn Leonard &middot; 2026</p>
+    <p style="margin-top:8px;">Expression-Gated Consciousness</p>
+  </div>
+</footer>
+
+<script>
+  // ── Mobile Nav ──
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // ── Email Subscribe ──
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const email = document.getElementById('emailInput').value;
+    if (!email) return;
+
+    // Store to localStorage
+    const subscribers = JSON.parse(localStorage.getItem('egc_subscribers') || '[]');
+    subscribers.push({ email, timestamp: new Date().toISOString() });
+    localStorage.setItem('egc_subscribers', JSON.stringify(subscribers));
+
+    // Show success
+    document.getElementById('emailInput').value = '';
+    document.getElementById('subscribeSuccess').classList.add('visible');
+    setTimeout(() => {
+      document.getElementById('subscribeSuccess').classList.remove('visible');
+    }, 4000);
+  }
+
+  // ── Scroll Animations ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── Close nav on link click (mobile) ──
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>

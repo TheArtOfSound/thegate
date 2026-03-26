@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gate Assessment — Discover Your Expression Type</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-card: #1a2235;
+    --bg-card-hover: #1f2a40;
+    --teal: #2dd4bf;
+    --teal-dim: #14b8a6;
+    --teal-glow: rgba(45, 212, 191, 0.15);
+    --purple: #a78bfa;
+    --purple-dim: #8b5cf6;
+    --purple-glow: rgba(167, 139, 250, 0.15);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #1e293b;
+    --border-focus: #334155;
+    --danger: #f87171;
+    --success: #34d399;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--teal-glow) 0%, var(--purple-glow) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--teal) 50%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  .hero-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  /* ── Progress Bar ── */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--bg-secondary);
+    z-index: 100;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--purple));
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+
+  /* ── Sections ── */
+  .section {
+    display: none;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Task Cards ── */
+  .task-section {
+    padding: 40px 0 80px;
+  }
+
+  .task-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .task-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .task-badge.task-1 {
+    color: var(--teal);
+    background: var(--teal-glow);
+    border: 1px solid rgba(45, 212, 191, 0.2);
+  }
+
+  .task-badge.task-2 {
+    color: var(--purple);
+    background: var(--purple-glow);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+  }
+
+  .task-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .task-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .prompt-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .prompt-card::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    position: absolute;
+    top: 8px;
+    left: 24px;
+    color: var(--teal);
+    opacity: 0.3;
+    line-height: 1;
+  }
+
+  .prompt-card.competitive::before { color: var(--purple); }
+
+  .prompt-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    padding-left: 8px;
+  }
+
+  .competitive-notice {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.08), rgba(139, 92, 246, 0.04));
+    border: 1px solid rgba(167, 139, 250, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .competitive-notice .icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .competitive-notice p {
+    font-size: 0.88rem;
+    color: var(--purple);
+    line-height: 1.6;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 240px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+  }
+
+  textarea:focus {
+    border-color: var(--teal-dim);
+    box-shadow: 0 0 0 3px var(--teal-glow);
+  }
+
+  .task-2 textarea:focus {
+    border-color: var(--purple-dim);
+    box-shadow: 0 0 0 3px var(--purple-glow);
+  }
+
+  .writing-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding: 0 4px;
+  }
+
+  .word-count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .word-count.warning { color: var(--danger); }
+
+  .timer {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--teal-dim), var(--teal));
+    color: var(--bg-primary);
+    font-weight: 600;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(45, 212, 191, 0.3);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-focus);
+  }
+
+  .btn-purple {
+    background: linear-gradient(135deg, var(--purple-dim), var(--purple));
+    color: var(--bg-primary);
+    font-weight: 600;
+  }
+
+  .btn-purple:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(167, 139, 250, 0.3);
+  }
+
+  .btn-purple:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Results ── */
+  .results-section {
+    padding: 40px 0 80px;
+  }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .results-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .type-reveal {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .type-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 24px;
+  }
+
+  .type-icon.compressor {
+    background: linear-gradient(135deg, var(--teal-glow), rgba(45, 212, 191, 0.05));
+    border: 2px solid var(--teal);
+  }
+
+  .type-icon.expander {
+    background: linear-gradient(135deg, var(--purple-glow), rgba(167, 139, 250, 0.05));
+    border: 2px solid var(--purple);
+  }
+
+  .type-icon.suppressor {
+    background: linear-gradient(135deg, rgba(248, 113, 113, 0.15), rgba(248, 113, 113, 0.05));
+    border: 2px solid var(--danger);
+  }
+
+  .type-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .type-name.compressor { color: var(--teal); }
+  .type-name.expander { color: var(--purple); }
+  .type-name.suppressor { color: var(--danger); }
+
+  .type-tagline {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  .type-description {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 600px;
+    margin: 0 auto 48px;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  /* ── Metrics Grid ── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .metric-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .metric-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 4px;
+  }
+
+  .metric-value.teal { color: var(--teal); }
+  .metric-value.purple { color: var(--purple); }
+
+  .metric-change {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .metric-change.up { color: var(--success); }
+  .metric-change.down { color: var(--danger); }
+  .metric-change.neutral { color: var(--text-muted); }
+
+  /* ── Comparison ── */
+  .comparison-table {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+  }
+
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    align-items: center;
+  }
+
+  .comparison-row:last-child { border-bottom: none; }
+  .comparison-row .label { color: var(--text-secondary); }
+  .comparison-row .val-1 { color: var(--teal); font-weight: 600; }
+  .comparison-row .val-2 { color: var(--purple); font-weight: 600; }
+
+  /* ── Share ── */
+  .share-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .share-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+
+  .share-section p {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+  }
+
+  .share-text {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .copy-feedback {
+    font-size: 0.8rem;
+    color: var(--success);
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-top: 8px;
+  }
+
+  .copy-feedback.visible { opacity: 1; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .footer a {
+    color: var(--teal);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer a:hover { color: var(--text-primary); }
+
+  /* ── Intro/Instructions ── */
+  .intro-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .intro-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .intro-card p, .intro-card li {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .intro-card ul {
+    list-style: none;
+    margin-top: 12px;
+  }
+
+  .intro-card ul li {
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .intro-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  /* ── Loading ── */
+  .loading-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 23, 0.92);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .loading-overlay.active { display: flex; }
+
+  .spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--border);
+    border-top-color: var(--teal);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .hero { padding: 60px 16px 40px; }
+    .container { padding: 0 16px; }
+    .prompt-card, .intro-card, .type-description, .share-section { padding: 24px; }
+    textarea { min-height: 200px; padding: 16px; }
+    .comparison-header, .comparison-row { padding: 12px 16px; font-size: 0.8rem; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- ══════════════ SECTION: INTRO ══════════════ -->
+<div class="section active" id="sectionIntro">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-label">Expression-Gated Consciousness</div>
+      <h1>The Gate Assessment</h1>
+      <p>Discover how your expression changes under pressure. Two short writing tasks. Five minutes. A window into how your mind gates its own depth.</p>
+      <p class="hero-meta">Based on the EGC framework by Bryan Leonard &amp; Brandyn Leonard</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="intro-card">
+      <h3>How it works</h3>
+      <p>You'll complete two short writing prompts about the same topic. Each takes 2-3 minutes. We'll measure how your expression shifts between them.</p>
+      <ul>
+        <li>Task 1 is a relaxed free-write with no pressure</li>
+        <li>Task 2 uses the same prompt, but framed differently</li>
+        <li>Your results reveal your <strong style="color:var(--text-primary)">expression type</strong> under the EGC model</li>
+      </ul>
+    </div>
+    <div class="intro-card">
+      <h3>What we measure</h3>
+      <p>We look at three signals across your two responses: <strong style="color:var(--teal)">volume</strong> (how much you write), <strong style="color:var(--teal)">lexical diversity</strong> (range of vocabulary), and <strong style="color:var(--teal)">entropy</strong> (information density). How these shift reveals whether pressure opens or closes your expressive gate.</p>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="startAssessment()">Begin the Assessment</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION: TASK 1 ══════════════ -->
+<div class="section" id="sectionTask1">
+  <div class="container task-section">
+    <div class="task-header">
+      <span class="task-badge task-1">Task 1 of 2</span>
+      <h2>Free Writing</h2>
+      <p>Take your time. There are no right or wrong answers. Just write naturally.</p>
+    </div>
+    <div class="prompt-card">
+      <p class="prompt-text">Think of a place that has been meaningful to you. It could be somewhere you grew up, a place you visited, or anywhere that holds significance. Describe this place and why it matters to you. Write freely and naturally — there is no word limit and no evaluation.</p>
+    </div>
+    <textarea id="task1Text" placeholder="Start writing here..." oninput="updateWordCount('task1')"></textarea>
+    <div class="writing-stats">
+      <span class="word-count" id="task1WordCount">0 words</span>
+      <span class="timer" id="task1Timer">--:--</span>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" id="task1Submit" disabled onclick="submitTask1()">Continue to Task 2</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ SECTION: TASK 2 ══════════════ -->
+<div class="section" id="sectionTask2">
+  <div class="container task-section task-2">
+    <div class="task-header">
+      <span class="task-badge task-2">Task 2 of 2</span>
+      <h2>Evaluated Writing</h2>
+      <p>Same topic, different context. Read the instructions carefully.</p>
+    </div>
+    <div class="competitive-notice">
+      <span class="icon">&#9888;</span>
+      <p><strong>This response will be scored and ranked.</strong> Your writing will be evaluated by a panel for clarity, depth, and eloquence. The top responses will be featured. Write accordingly.</p>
+    </div>
+    <div class="prompt-card competitive">
+      <p class="prompt-text">Think of a place that has been meaningful to you. It could be somewhere you grew up, a place you visited, or anywhere that holds significance. Describe this place and why it matters to you.</p>
+    </div>
+    <textarea id="task2Text" placeholder="Start writing here..." oninput="updateWordCount('task2')"></textarea>
+    <div class="writing-stats">
+      <span class="word-count" id="task2WordCount">0 words</span>
+      <span class="timer" id="task2Timer">--:--</span>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-purple" id="task2Submit" disabled onclick="submitTask2()">See My Results</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ LOADING ══════════════ -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="loading-text">Analyzing your expression patterns...</div>
+</div>
+
+<!-- ══════════════ SECTION: RESULTS ══════════════ -->
+<div class="section" id="sectionResults">
+  <div class="container results-section">
+    <div class="results-header">
+      <div class="hero-label">Your Results</div>
+      <h2>Expression Profile</h2>
+    </div>
+
+    <div class="type-reveal">
+      <div class="type-icon" id="typeIcon"></div>
+      <div class="type-name" id="typeName"></div>
+      <div class="type-tagline" id="typeTagline"></div>
+    </div>
+
+    <div class="type-description" id="typeDescription"></div>
+
+    <div class="metrics-grid" id="metricsGrid"></div>
+
+    <div class="comparison-table">
+      <div class="comparison-header">
+        <span>Metric</span>
+        <span>Task 1 (Free)</span>
+        <span>Task 2 (Evaluated)</span>
+      </div>
+      <div id="comparisonRows"></div>
+    </div>
+
+    <div class="share-section">
+      <h3>Share Your Results</h3>
+      <p>Let others discover their expression type.</p>
+      <div class="share-text" id="shareText"></div>
+      <button class="btn btn-secondary" onclick="copyResults()">Copy to Clipboard</button>
+      <div class="copy-feedback" id="copyFeedback">Copied!</div>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="retakeAssessment()">Retake Assessment</button>
+      <a class="btn btn-primary" href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">Explore the Study</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<div class="footer">
+  <p>Based on <em>Expression-Gated Consciousness</em> by Bryan Leonard &amp; Brandyn Leonard</p>
+  <p style="margin-top:8px;">
+    <a href="https://osf.io/preprints/psyarxiv/e6jzf_v1" target="_blank" rel="noopener">Read the preprint on PsyArXiv</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">View the live study</a>
+  </p>
+  <p style="margin-top:12px;font-size:0.78rem;">&copy; 2026 Bryan Leonard &amp; Brandyn Leonard. All rights reserved.</p>
+</div>
+
+<script>
+  // ── State ──
+  let task1Start = null, task2Start = null;
+  let task1Elapsed = 0, task2Elapsed = 0;
+  let timerInterval = null;
+
+  const MIN_WORDS = 30;
+
+  // ── Navigation ──
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function setProgress(pct) {
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+
+  // ── Timer ──
+  function startTimer(task) {
+    if (timerInterval) clearInterval(timerInterval);
+    const startTime = Date.now();
+    const timerEl = document.getElementById(task + 'Timer');
+    timerInterval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      if (task === 'task1') task1Elapsed = elapsed;
+      else task2Elapsed = elapsed;
+      const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+      const s = String(elapsed % 60).padStart(2, '0');
+      timerEl.textContent = m + ':' + s;
+    }, 1000);
+  }
+
+  // ── Word Count ──
+  function getWords(text) {
+    return text.trim().split(/\s+/).filter(w => w.length > 0);
+  }
+
+  function updateWordCount(task) {
+    const text = document.getElementById(task + 'Text').value;
+    const words = getWords(text);
+    const count = words.length;
+    const el = document.getElementById(task + 'WordCount');
+    el.textContent = count + ' word' + (count !== 1 ? 's' : '');
+
+    const btn = document.getElementById(task + 'Submit');
+    if (count >= MIN_WORDS) {
+      btn.disabled = false;
+      el.classList.remove('warning');
+    } else {
+      btn.disabled = true;
+      if (count > 0 && count < MIN_WORDS) {
+        el.textContent += ' (min ' + MIN_WORDS + ')';
+        el.classList.add('warning');
+      }
+    }
+  }
+
+  // ── Flow ──
+  function startAssessment() {
+    showSection('sectionTask1');
+    setProgress(25);
+    startTimer('task1');
+    setTimeout(() => document.getElementById('task1Text').focus(), 400);
+  }
+
+  function submitTask1() {
+    clearInterval(timerInterval);
+    showSection('sectionTask2');
+    setProgress(50);
+    startTimer('task2');
+    setTimeout(() => document.getElementById('task2Text').focus(), 400);
+  }
+
+  function submitTask2() {
+    clearInterval(timerInterval);
+    setProgress(75);
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.classList.add('active');
+    setTimeout(() => {
+      computeResults();
+      overlay.classList.remove('active');
+      showSection('sectionResults');
+      setProgress(100);
+    }, 2000);
+  }
+
+  // ── Analysis ──
+  function computeMetrics(text) {
+    const words = getWords(text.toLowerCase().replace(/[^a-z\s''-]/g, ' '));
+    const wordCount = words.length;
+    if (wordCount === 0) return { wordCount: 0, ttr: 0, entropy: 0 };
+
+    const unique = new Set(words);
+    const ttr = unique.size / wordCount;
+
+    // Shannon entropy approximation via word frequency
+    const freq = {};
+    words.forEach(w => { freq[w] = (freq[w] || 0) + 1; });
+    let entropy = 0;
+    Object.values(freq).forEach(f => {
+      const p = f / wordCount;
+      if (p > 0) entropy -= p * Math.log2(p);
+    });
+
+    return { wordCount, ttr: Math.round(ttr * 1000) / 1000, entropy: Math.round(entropy * 1000) / 1000 };
+  }
+
+  function classify(m1, m2) {
+    const volumeChange = (m2.wordCount - m1.wordCount) / Math.max(m1.wordCount, 1);
+    const ttrChange = (m2.ttr - m1.ttr) / Math.max(m1.ttr, 0.001);
+    const entropyChange = (m2.entropy - m1.entropy) / Math.max(m1.entropy, 0.001);
+
+    // Quality composite
+    const qualityChange = (ttrChange + entropyChange) / 2;
+
+    // Classification logic
+    if (volumeChange < -0.1 && qualityChange > -0.1) {
+      return 'compressor';
+    } else if (volumeChange > 0.05) {
+      return 'expander';
+    } else if (volumeChange < -0.05 && qualityChange < -0.05) {
+      return 'suppressor';
+    } else if (qualityChange < -0.15) {
+      return 'suppressor';
+    } else if (volumeChange < -0.1) {
+      return 'compressor';
+    } else {
+      return 'compressor'; // default: most people compress somewhat
+    }
+  }
+
+  function computeResults() {
+    const text1 = document.getElementById('task1Text').value;
+    const text2 = document.getElementById('task2Text').value;
+    const m1 = computeMetrics(text1);
+    const m2 = computeMetrics(text2);
+    const type = classify(m1, m2);
+
+    renderResults(type, m1, m2);
+  }
+
+  // ── Render Results ──
+  const TYPE_DATA = {
+    compressor: {
+      icon: '\u25C9',
+      name: 'Compressor',
+      tagline: 'You say less, but you don\'t say less well.',
+      description: 'When the stakes rise, you instinctively tighten. Your word count drops, but the quality of what you express stays stable or even improves. This is the most common EGC pattern — the gate narrows under pressure, but what passes through is concentrated. You may recognize this as the feeling of "having so much to say" but finding that the words come out more carefully, more deliberately. Your depth doesn\'t disappear. It compresses.',
+      color: 'teal'
+    },
+    expander: {
+      icon: '\u2726',
+      name: 'Expander',
+      tagline: 'Pressure opens something in you.',
+      description: 'Where most people contract under evaluative pressure, you expand. Your volume increases and your expression flourishes when the stakes are raised. This is the rarest EGC pattern. You may be someone who thrives in performance contexts — not despite the pressure, but because of it. The gate widens. This doesn\'t mean you don\'t feel the pressure. It means your expression system responds to it by opening rather than closing.',
+      color: 'purple'
+    },
+    suppressor: {
+      icon: '\u2662',
+      name: 'Suppressor',
+      tagline: 'The gate closes, and it takes depth with it.',
+      description: 'Under evaluative pressure, both your volume and your quality decline. This is the EGC pattern where the resistance term r dominates — pressure doesn\'t just narrow the channel, it degrades the signal. This is not a flaw. It\'s information. Many brilliant thinkers are Suppressors — people whose deepest insights are most accessible in low-pressure environments. Understanding this pattern is the first step toward designing contexts where your full depth can emerge.'
+    }
+  };
+
+  function renderResults(type, m1, m2) {
+    const data = TYPE_DATA[type];
+
+    // Icon
+    const iconEl = document.getElementById('typeIcon');
+    iconEl.className = 'type-icon ' + type;
+    iconEl.textContent = data.icon;
+
+    // Name & tagline
+    const nameEl = document.getElementById('typeName');
+    nameEl.className = 'type-name ' + type;
+    nameEl.textContent = data.name;
+    document.getElementById('typeTagline').textContent = data.tagline;
+
+    // Description
+    document.getElementById('typeDescription').textContent = data.description;
+
+    // Metrics
+    const volumeChange = ((m2.wordCount - m1.wordCount) / Math.max(m1.wordCount, 1) * 100).toFixed(0);
+    const ttrChange = ((m2.ttr - m1.ttr) / Math.max(m1.ttr, 0.001) * 100).toFixed(0);
+    const entropyChange = ((m2.entropy - m1.entropy) / Math.max(m1.entropy, 0.001) * 100).toFixed(0);
+
+    function changeClass(val) { return parseFloat(val) > 0 ? 'up' : parseFloat(val) < 0 ? 'down' : 'neutral'; }
+    function changeLabel(val) { return (parseFloat(val) > 0 ? '+' : '') + val + '%'; }
+
+    document.getElementById('metricsGrid').innerHTML = `
+      <div class="metric-card">
+        <div class="metric-label">Volume Change</div>
+        <div class="metric-value ${parseFloat(volumeChange) >= 0 ? 'purple' : 'teal'}">${changeLabel(volumeChange)}</div>
+        <div class="metric-change ${changeClass(volumeChange)}">${m1.wordCount} &rarr; ${m2.wordCount} words</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Diversity Change</div>
+        <div class="metric-value ${parseFloat(ttrChange) >= 0 ? 'purple' : 'teal'}">${changeLabel(ttrChange)}</div>
+        <div class="metric-change ${changeClass(ttrChange)}">TTR: ${m1.ttr} &rarr; ${m2.ttr}</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Entropy Change</div>
+        <div class="metric-value ${parseFloat(entropyChange) >= 0 ? 'purple' : 'teal'}">${changeLabel(entropyChange)}</div>
+        <div class="metric-change ${changeClass(entropyChange)}">${m1.entropy} &rarr; ${m2.entropy} bits</div>
+      </div>
+    `;
+
+    // Comparison table
+    document.getElementById('comparisonRows').innerHTML = `
+      <div class="comparison-row"><span class="label">Word count</span><span class="val-1">${m1.wordCount}</span><span class="val-2">${m2.wordCount}</span></div>
+      <div class="comparison-row"><span class="label">Type-Token Ratio</span><span class="val-1">${m1.ttr}</span><span class="val-2">${m2.ttr}</span></div>
+      <div class="comparison-row"><span class="label">Shannon Entropy</span><span class="val-1">${m1.entropy}</span><span class="val-2">${m2.entropy}</span></div>
+      <div class="comparison-row"><span class="label">Time spent</span><span class="val-1">${formatTime(task1Elapsed)}</span><span class="val-2">${formatTime(task2Elapsed)}</span></div>
+    `;
+
+    // Share text
+    document.getElementById('shareText').textContent =
+      `I'm a ${data.name} — "${data.tagline}" Took The Gate Assessment based on Expression-Gated Consciousness research. Discover your expression type: [link]`;
+  }
+
+  function formatTime(seconds) {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  // ── Actions ──
+  function copyResults() {
+    const text = document.getElementById('shareText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const feedback = document.getElementById('copyFeedback');
+      feedback.classList.add('visible');
+      setTimeout(() => feedback.classList.remove('visible'), 2000);
+    });
+  }
+
+  function retakeAssessment() {
+    document.getElementById('task1Text').value = '';
+    document.getElementById('task2Text').value = '';
+    document.getElementById('task1WordCount').textContent = '0 words';
+    document.getElementById('task2WordCount').textContent = '0 words';
+    document.getElementById('task1Timer').textContent = '--:--';
+    document.getElementById('task2Timer').textContent = '--:--';
+    document.getElementById('task1Submit').disabled = true;
+    document.getElementById('task2Submit').disabled = true;
+    task1Elapsed = 0;
+    task2Elapsed = 0;
+    showSection('sectionIntro');
+    setProgress(0);
+  }
+</script>
+
+</body>
+</html>
