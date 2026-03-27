@@ -1417,15 +1417,15 @@
         <div class="plain-step">
           <div class="step-num">2</div>
           <div class="step-text">
-            <h4>Pressure narrows the gate</h4>
-            <p>Being watched, judged, evaluated &mdash; these are forms of pressure. Under pressure, the gate narrows. Not because your knowledge decreases, but because the pathway from knowing to expressing gets constricted.</p>
+            <h4>Pressure changes the gate &mdash; but not the way we expected</h4>
+            <p>We originally hypothesized that evaluative pressure would uniformly suppress expression. What the data actually shows is more interesting: pressure doesn't close the gate for everyone. For some people it narrows. For others it opens wider. The gate responds &mdash; but the direction depends on the person.</p>
           </div>
         </div>
         <div class="plain-step">
           <div class="step-num">3</div>
           <div class="step-text">
-            <h4>People respond differently</h4>
-            <p>Some people compress under pressure &mdash; say less but maintain quality. Others expand, using pressure as fuel. And some suppress &mdash; both volume and depth decline. These are measurable, classifiable patterns.</p>
+            <h4>Three distinct patterns emerge</h4>
+            <p>Some people compress &mdash; say less but maintain quality. Others expand &mdash; pressure becomes fuel and their expression gets richer. And some suppress &mdash; both volume and depth decline. At 34 subjects, Expanders are nearly as common as Compressors. The gate doesn't just close. It reveals who you are.</p>
           </div>
         </div>
         <div class="plain-step">
@@ -1538,16 +1538,16 @@
     <p class="section-subtitle fade-in">Real data from real participants. The study is ongoing.</p>
     <div class="stats-grid fade-in">
       <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="28">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-number"><span class="counter" data-target="34">0</span><span class="stat-suffix">+</span></div>
         <div class="stat-label">Participants</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="61">0</span><span class="stat-suffix">%</span></div>
-        <div class="stat-label">Write fewer words under pressure</div>
+        <div class="stat-number"><span class="counter" data-target="3">0</span></div>
+        <div class="stat-label">Distinct expression types identified</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="13.4" data-decimal="true">0</span><span class="stat-suffix">%</span></div>
-        <div class="stat-label">Average volume reduction</div>
+        <div class="stat-number"><span class="counter" data-target="100">0</span><span class="stat-suffix">%</span></div>
+        <div class="stat-label">Show measurable expression change under pressure</div>
       </div>
     </div>
     <div class="stats-cta fade-in">
@@ -1971,8 +1971,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!statLabel) return;
       const text = statLabel.textContent.toLowerCase();
       if (text.includes('participant')) { el.dataset.target = n; }
-      else if (text.includes('fewer words')) { el.dataset.target = volPct; }
-      else if (text.includes('volume reduction')) { el.dataset.target = avgRed; el.dataset.decimal = 'true'; }
     });
 
     // Update type stats
