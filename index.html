@@ -249,18 +249,21 @@
 
   .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 20px;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .nav-links a {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.2s;
+    letter-spacing: 0.02em;
   }
 
   .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a.active { color: var(--teal); }
 
   .nav-cta {
     background: linear-gradient(135deg, var(--teal-dim), var(--teal)) !important;
@@ -1327,10 +1330,14 @@
   <a href="#" class="nav-logo">The <span>Gate</span></a>
   <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle menu">&#9776;</button>
   <div class="nav-links" id="navLinks">
-    <a href="#felt-this">The Experience</a>
-    <a href="#science">The Science</a>
-    <a href="#types">Expression Types</a>
-    <a href="#research">Research</a>
+    <a href="#felt-this">Experience</a>
+    <a href="#science">Science</a>
+    <a href="#types">Types</a>
+    <a href="#stats">Data</a>
+    <a href="#applications">Applications</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#case-study">Case Study</a>
+    <a href="#submissions">Publications</a>
     <a href="https://theartofsound.github.io/egcstudy/" class="nav-cta">Take the Study</a>
   </div>
 </nav>
@@ -2346,6 +2353,21 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     document.getElementById('navLinks').classList.remove('open');
   });
 });
+
+// ══════════════ SCROLL SPY — ACTIVE NAV ══════════════
+const sections = document.querySelectorAll('section[id], div.hero');
+const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 120;
+    if (window.pageYOffset >= top) current = sec.getAttribute('id');
+  });
+  navAnchors.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}, { passive: true });
 
 // ══════════════ NAV HIDE ON SCROLL DOWN ══════════════
 let lastScroll = 0;
