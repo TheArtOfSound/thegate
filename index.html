@@ -662,6 +662,20 @@
 </head>
 <body>
 
+<!-- ══════════════ GATE CHECK ══════════════ -->
+<div id="gate-wall" style="display:none; position:fixed; inset:0; z-index:9999; background:var(--bg-primary); display:flex; align-items:center; justify-content:center; text-align:center; padding:24px;">
+  <div style="max-width:520px;">
+    <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:4px; color:var(--teal); margin-bottom:24px;">Expression-Gated Consciousness</div>
+    <h1 style="font-family:'Playfair Display',serif; font-size:clamp(2.5rem,6vw,4rem); font-weight:700; line-height:1.1; margin-bottom:24px; background:linear-gradient(135deg, var(--text-primary) 0%, var(--teal) 60%, var(--purple) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">The Gate</h1>
+    <p style="font-size:1.1rem; color:var(--text-secondary); line-height:1.7; margin-bottom:16px; font-family:'Playfair Display',serif; font-style:italic;">To enter, you must first experience it.</p>
+    <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.7; margin-bottom:40px;">Take the 10-minute writing study to discover your expression type. Once complete, you'll unlock the full framework, research, and your results.</p>
+    <a href="https://theartofsound.github.io/egcstudy/" style="display:inline-flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:0.95rem; font-weight:600; padding:16px 36px; border:none; border-radius:12px; cursor:pointer; text-decoration:none; background:linear-gradient(135deg, var(--teal-dim), var(--teal)); color:var(--bg-primary); transition:all 0.3s;">Take the Study &rarr;</a>
+    <br><br>
+    <button onclick="document.getElementById('gate-wall').style.display='none'; document.getElementById('main-content').style.display='block';" style="background:none; border:none; color:var(--text-muted); font-family:'Inter',sans-serif; font-size:0.85rem; cursor:pointer; padding:8px 16px; transition:color 0.2s; text-decoration:underline; text-underline-offset:3px;">Just let me read the research</button>
+  </div>
+</div>
+
+<div id="main-content" style="display:none;">
 <!-- ══════════════ NAV ══════════════ -->
 <nav>
   <a href="#" class="nav-logo">The <span>Gate</span></a>
@@ -670,7 +684,7 @@
     <a href="#about">About</a>
     <a href="#types">Expression Types</a>
     <a href="#research">Research</a>
-    <a href="egc_assessment.html" class="nav-cta">Take the Assessment</a>
+    <a href="https://theartofsound.github.io/egcstudy/" class="nav-cta">Take the Assessment</a>
   </div>
 </nav>
 
@@ -681,7 +695,7 @@
     <h1>The Gate</h1>
     <p class="hero-subtitle">Why you know more than you say &mdash; and the science behind it</p>
     <div class="hero-buttons">
-      <a href="egc_assessment.html" class="btn btn-primary">Take the Assessment</a>
+      <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary">Take the Assessment</a>
       <a href="#about" class="btn btn-secondary">Learn More</a>
     </div>
   </div>
@@ -728,7 +742,7 @@
       </div>
     </div>
     <div class="types-cta fade-in">
-      <a href="egc_assessment.html" class="btn btn-primary">Discover Your Type</a>
+      <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary">Discover Your Type</a>
     </div>
   </div>
 </section>
@@ -789,7 +803,7 @@
 <footer>
   <div class="footer-content">
     <div class="footer-links">
-      <a href="egc_assessment.html">Take the Assessment</a>
+      <a href="https://theartofsound.github.io/egcstudy/">Take the Assessment</a>
       <a href="https://osf.io/preprints/psyarxiv/e6jzf_v1" target="_blank" rel="noopener">PsyArXiv</a>
       <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">Live Study</a>
     </div>
@@ -798,7 +812,24 @@
   </div>
 </footer>
 
+</div><!-- end main-content -->
 <script>
+  // ── Gate Check ──
+  (function() {
+    const completed = localStorage.getItem('egc_study_completed');
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasAccess = completed || urlParams.get('access') === 'granted';
+    const gateWall = document.getElementById('gate-wall');
+    const mainContent = document.getElementById('main-content');
+    if (hasAccess) {
+      gateWall.style.display = 'none';
+      if (mainContent) mainContent.style.display = 'block';
+    } else {
+      gateWall.style.display = 'flex';
+      if (mainContent) mainContent.style.display = 'none';
+    }
+  })();
+
   // ── Mobile Nav ──
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
