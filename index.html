@@ -1829,7 +1829,135 @@
   </div>
 </footer>
 
+<!-- ══════════════ AGREEMENT MODAL ══════════════ -->
+<div id="study-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:var(--bg-secondary,#111827);border:1px solid var(--border,#1e293b);border-radius:20px;padding:40px 36px;max-width:520px;width:100%;text-align:center;position:relative;animation:fadeUp 0.3s ease;">
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(45,212,191,0.1);border:2px solid var(--teal,#2dd4bf);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.5rem;">&#9998;</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:12px;color:var(--text-primary,#f1f5f9);">Before you begin</h3>
+    <p style="font-size:0.95rem;color:var(--text-secondary,#94a3b8);line-height:1.8;margin-bottom:24px;">This study works best when you write naturally and honestly. There are no right or wrong answers &mdash; we're interested in <em>your</em> authentic expression, not performance.</p>
+    <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.15);border-radius:12px;padding:16px;text-align:left;margin-bottom:24px;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.88rem;color:var(--text-secondary,#94a3b8);line-height:1.6;">
+          <input type="checkbox" class="modal-check" style="margin-top:4px;accent-color:#2dd4bf;width:16px;height:16px;flex-shrink:0;">
+          I will write in my own words and express myself authentically
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.88rem;color:var(--text-secondary,#94a3b8);line-height:1.6;">
+          <input type="checkbox" class="modal-check" style="margin-top:4px;accent-color:#2dd4bf;width:16px;height:16px;flex-shrink:0;">
+          I understand there are no right or wrong answers
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.88rem;color:var(--text-secondary,#94a3b8);line-height:1.6;">
+          <input type="checkbox" class="modal-check" style="margin-top:4px;accent-color:#2dd4bf;width:16px;height:16px;flex-shrink:0;">
+          I will not use AI or external tools to write my responses
+        </label>
+      </div>
+    </div>
+    <button id="modal-proceed" disabled onclick="proceedToStudy()" style="width:100%;padding:16px;background:var(--border,#1e293b);border:none;border-radius:12px;color:var(--text-muted,#64748b);font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:600;cursor:not-allowed;transition:all 0.3s;">Check all to continue</button>
+    <button onclick="closeModal()" style="background:none;border:none;color:var(--text-muted,#64748b);font-size:0.82rem;cursor:pointer;margin-top:12px;padding:8px;font-family:'Inter',sans-serif;">Cancel</button>
+  </div>
+</div>
+
 </div><!-- end main-content -->
+
+<script>
+// ══════════════ AGREEMENT MODAL ══════════════
+function showStudyModal(e) {
+  if (e) e.preventDefault();
+  const modal = document.getElementById('study-modal');
+  modal.style.display = 'flex';
+  document.querySelectorAll('.modal-check').forEach(c => c.checked = false);
+  updateModalBtn();
+}
+
+function closeModal() {
+  document.getElementById('study-modal').style.display = 'none';
+}
+
+function updateModalBtn() {
+  const checks = document.querySelectorAll('.modal-check');
+  const allChecked = Array.from(checks).every(c => c.checked);
+  const btn = document.getElementById('modal-proceed');
+  if (allChecked) {
+    btn.disabled = false;
+    btn.style.background = 'linear-gradient(135deg, #14b8a6, #2dd4bf)';
+    btn.style.color = '#0a0e17';
+    btn.style.cursor = 'pointer';
+    btn.textContent = 'I\'m ready — take me to the study →';
+  } else {
+    btn.disabled = true;
+    btn.style.background = '#1e293b';
+    btn.style.color = '#64748b';
+    btn.style.cursor = 'not-allowed';
+    btn.textContent = 'Check all to continue';
+  }
+}
+
+function proceedToStudy() {
+  window.location.href = 'https://theartofsound.github.io/egcstudy/';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Intercept all study links
+  document.querySelectorAll('a[href*="theartofsound.github.io/egcstudy"]').forEach(link => {
+    // Skip footer and nav links — only intercept CTA buttons
+    if (link.classList.contains('btn') || link.classList.contains('nav-cta')) {
+      link.addEventListener('click', showStudyModal);
+    }
+  });
+  // Checkbox listeners
+  document.querySelectorAll('.modal-check').forEach(c => {
+    c.addEventListener('change', updateModalBtn);
+  });
+});
+
+// ══════════════ LIVE STATS FROM SUPABASE ══════════════
+(async function loadLiveStats() {
+  const SUPA_URL = 'https://wgzopjrdnyazvhpklzhw.supabase.co';
+  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnem9wanJkbnlhenZocGtsemh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzOTc4NzcsImV4cCI6MjA4OTk3Mzg3N30.8dx5xWljLDZa5PMvE0Ps5q4ZEyuZgx_5FHVnD0WfBjs';
+  try {
+    const res = await fetch(SUPA_URL + '/rest/v1/egc_responses?select=t1_wordcount,t2_wordcount,t1_score,t2_score&order=created_at.desc&limit=500', {
+      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
+    });
+    if (!res.ok) return;
+    const rows = await res.json();
+    const n = rows.length;
+    if (n === 0) return;
+
+    // Calculate real stats
+    let volDrops = 0, totalVolPct = 0, compressors = 0, expanders = 0, suppressors = 0;
+    rows.forEach(r => {
+      const wc1 = r.t1_wordcount || 0, wc2 = r.t2_wordcount || 0;
+      const t1 = r.t1_score || 0, t2 = r.t2_score || 0;
+      const volDropped = wc2 < wc1;
+      const qualityHeld = t2 >= t1 * 0.95;
+      if (volDropped) volDrops++;
+      totalVolPct += wc1 > 0 ? ((wc1 - wc2) / wc1 * 100) : 0;
+      if (volDropped && qualityHeld) compressors++;
+      else if (!volDropped && qualityHeld) expanders++;
+      else suppressors++;
+    });
+    const volPct = Math.round(volDrops / n * 100);
+    const avgRed = Math.abs(totalVolPct / n).toFixed(1);
+
+    // Update counters
+    document.querySelectorAll('.counter').forEach(el => {
+      const label = el.closest('.stat-item');
+      if (!label) return;
+      const statLabel = label.querySelector('.stat-label');
+      if (!statLabel) return;
+      const text = statLabel.textContent.toLowerCase();
+      if (text.includes('participant')) { el.dataset.target = n; }
+      else if (text.includes('fewer words')) { el.dataset.target = volPct; }
+      else if (text.includes('volume reduction')) { el.dataset.target = avgRed; el.dataset.decimal = 'true'; }
+    });
+
+    // Update type stats
+    const typeStats = document.querySelectorAll('.type-stat');
+    if (typeStats[0]) typeStats[0].textContent = Math.round(compressors/n*100) + '% of participants (' + compressors + '/' + n + ')';
+    if (typeStats[1]) typeStats[1].textContent = Math.round(expanders/n*100) + '% of participants (' + expanders + '/' + n + ')';
+    if (typeStats[2]) typeStats[2].textContent = Math.round(suppressors/n*100) + '% of participants (' + suppressors + '/' + n + ')';
+  } catch(e) { /* fail silently, keep hardcoded defaults */ }
+})();
+</script>
 
 <script>
 // ══════════════ GATE PARTICLES ══════════════
