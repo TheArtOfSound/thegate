@@ -1299,6 +1299,34 @@
   .fade-in-delay-2 { transition-delay: 0.2s; }
   .fade-in-delay-3 { transition-delay: 0.3s; }
   .fade-in-delay-4 { transition-delay: 0.4s; }
+
+  /* ══════════════ ZONE DIVIDERS ══════════════ */
+  .zone-divider {
+    padding: 48px 24px 0;
+    text-align: center;
+    position: relative;
+  }
+  .zone-divider::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-focus), transparent);
+  }
+  .zone-label {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    background: var(--bg-primary);
+    padding: 0 20px;
+    position: relative;
+  }
 </style>
 </head>
 <body>
@@ -1334,10 +1362,7 @@
   <div class="nav-links" id="navLinks">
     <a href="#felt-this">Experience</a>
     <a href="#science">Science</a>
-    <a href="#types">Types</a>
-    <a href="#applications">Applications</a>
-    <a href="#methodology">Methodology</a>
-    <a href="#submissions">Publications</a>
+    <a href="#methodology">Research</a>
     <a href="https://theartofsound.github.io/egcstudy/" class="nav-cta">Take the Study</a>
   </div>
 </nav>
@@ -1391,6 +1416,47 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════ THREE TYPES ══════════════ -->
+<section id="types">
+  <div class="section-container">
+    <div class="section-label fade-in">The Three Types</div>
+    <h2 class="section-title fade-in">How does your gate respond to pressure?</h2>
+    <p class="section-subtitle fade-in">Everyone has a pattern. Discover yours.</p>
+    <div class="types-grid">
+      <div class="type-card teal fade-in fade-in-delay-1">
+        <div class="type-card-icon">&#9673;</div>
+        <h3>Compressor</h3>
+        <p class="type-desc">Volume drops, quality holds. Under pressure, you say less &mdash; but what you say maintains its depth and precision. The gate narrows, but the signal stays clean.</p>
+        <p class="type-example">"In meetings I give the short version. Not because I can't explain &mdash; because the room makes me edit in real time."</p>
+        <span class="type-stat">41% of participants</span>
+      </div>
+      <div class="type-card purple fade-in fade-in-delay-2">
+        <div class="type-card-icon">&#10022;</div>
+        <h3>Expander</h3>
+        <p class="type-desc">Pressure opens the gate. Your volume and richness increase when the stakes rise. You thrive under evaluation &mdash; pressure becomes fuel for expression.</p>
+        <p class="type-example">"I come alive in presentations. The audience doesn't make me smaller &mdash; it makes me sharper."</p>
+        <span class="type-stat">35% of participants</span>
+      </div>
+      <div class="type-card red fade-in fade-in-delay-3">
+        <div class="type-card-icon">&#9826;</div>
+        <h3>Suppressor</h3>
+        <p class="type-desc">Both volume and quality decline under pressure. The resistance term dominates. This is not a weakness &mdash; it means your deepest insights emerge in low-pressure environments.</p>
+        <p class="type-example">"My best ideas come in the shower, in my journal, walking alone. Give me space and I'll give you depth."</p>
+        <span class="type-stat">24% of participants</span>
+      </div>
+    </div>
+    <div class="types-cta fade-in">
+      <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary">Discover Your Type &rarr;</a>
+    </div>
+  </div>
+
+<div style="text-align:center;padding:40px 24px;">
+  <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary" style="font-size:1.1rem;padding:20px 48px;">Discover Your Type &rarr;</a>
+  <p style="font-size:0.82rem;color:var(--text-muted);margin-top:12px;">10 minutes. Two writing tasks. Instant results.</p>
+</div>
+
+<div class="zone-divider"><span class="zone-label">The Science</span></div>
 
 <!-- ══════════════ THE SCIENCE ══════════════ -->
 <section id="science">
@@ -1495,41 +1561,6 @@
   </div>
 </section>
 
-<!-- ══════════════ THREE TYPES ══════════════ -->
-<section id="types">
-  <div class="section-container">
-    <div class="section-label fade-in">The Three Types</div>
-    <h2 class="section-title fade-in">How does your gate respond to pressure?</h2>
-    <p class="section-subtitle fade-in">Everyone has a pattern. Discover yours.</p>
-    <div class="types-grid">
-      <div class="type-card teal fade-in fade-in-delay-1">
-        <div class="type-card-icon">&#9673;</div>
-        <h3>Compressor</h3>
-        <p class="type-desc">Volume drops, quality holds. Under pressure, you say less &mdash; but what you say maintains its depth and precision. The gate narrows, but the signal stays clean.</p>
-        <p class="type-example">"In meetings I give the short version. Not because I can't explain &mdash; because the room makes me edit in real time."</p>
-        <span class="type-stat">41% of participants</span>
-      </div>
-      <div class="type-card purple fade-in fade-in-delay-2">
-        <div class="type-card-icon">&#10022;</div>
-        <h3>Expander</h3>
-        <p class="type-desc">Pressure opens the gate. Your volume and richness increase when the stakes rise. You thrive under evaluation &mdash; pressure becomes fuel for expression.</p>
-        <p class="type-example">"I come alive in presentations. The audience doesn't make me smaller &mdash; it makes me sharper."</p>
-        <span class="type-stat">35% of participants</span>
-      </div>
-      <div class="type-card red fade-in fade-in-delay-3">
-        <div class="type-card-icon">&#9826;</div>
-        <h3>Suppressor</h3>
-        <p class="type-desc">Both volume and quality decline under pressure. The resistance term dominates. This is not a weakness &mdash; it means your deepest insights emerge in low-pressure environments.</p>
-        <p class="type-example">"My best ideas come in the shower, in my journal, walking alone. Give me space and I'll give you depth."</p>
-        <span class="type-stat">24% of participants</span>
-      </div>
-    </div>
-    <div class="types-cta fade-in">
-      <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary">Discover Your Type &rarr;</a>
-    </div>
-  </div>
-</section>
-
 <!-- ══════════════ LIVE STATS ══════════════ -->
 <section id="stats">
   <div class="section-container">
@@ -1557,31 +1588,6 @@
       <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary">Contribute Your Data &rarr;</a>
     </div>
   </div>
-</section>
-
-<!-- ══════════════ RESEARCH ══════════════ -->
-<section id="research">
-  <div class="section-container">
-    <div class="section-label fade-in">The Research</div>
-    <h2 class="section-title fade-in">Read the science</h2>
-    <p class="section-subtitle fade-in">Open access. Peer review in progress.</p>
-    <div class="research-cards fade-in">
-      <div class="research-card">
-        <div class="research-icon">&#128220;</div>
-        <h3>Zenodo Preprint</h3>
-        <p>The formal EGC paper. Mathematical framework, falsifiable predictions, experimental protocol, and comparisons against IIT, GWT, panpsychism, and Orch-OR.</p>
-        <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener">Read on Zenodo</a>
-      </div>
-      <div class="research-card">
-        <div class="research-icon">&#128202;</div>
-        <h3>Live Study</h3>
-        <p>The ongoing EGC expression type study. Two writing tasks measuring how evaluative pressure modulates expressive output. Data collection in progress.</p>
-        <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">View the study</a>
-      </div>
-    </div>
-    <p class="research-note fade-in">Submitted to Journal of Consciousness Studies &amp; Neuroscience of Consciousness</p>
-  </div>
-</section>
 
 <!-- ══════════════ APPLICATIONS ══════════════ -->
 <section id="applications" style="border-top:1px solid var(--border);">
@@ -1629,7 +1635,8 @@
 
     </div>
   </div>
-</section>
+
+<div class="zone-divider"><span class="zone-label">For Researchers</span></div>
 
 <!-- ══════════════ METHODOLOGY ══════════════ -->
 <section id="methodology" style="border-top:1px solid var(--border);">
@@ -1739,7 +1746,6 @@
       </div>
     </div>
   </div>
-</section>
 
 <!-- ══════════════ CASE STUDY: THE K-r FEEDBACK LOOP ══════════════ -->
 <section id="case-study" style="border-top:1px solid var(--border);">
@@ -1799,7 +1805,29 @@
       </div>
     </div>
   </div>
-</section>
+
+<!-- ══════════════ RESEARCH ══════════════ -->
+<section id="research">
+  <div class="section-container">
+    <div class="section-label fade-in">The Research</div>
+    <h2 class="section-title fade-in">Read the science</h2>
+    <p class="section-subtitle fade-in">Open access. Peer review in progress.</p>
+    <div class="research-cards fade-in">
+      <div class="research-card">
+        <div class="research-icon">&#128220;</div>
+        <h3>Zenodo Preprint</h3>
+        <p>The formal EGC paper. Mathematical framework, falsifiable predictions, experimental protocol, and comparisons against IIT, GWT, panpsychism, and Orch-OR.</p>
+        <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener">Read on Zenodo</a>
+      </div>
+      <div class="research-card">
+        <div class="research-icon">&#128202;</div>
+        <h3>Live Study</h3>
+        <p>The ongoing EGC expression type study. Two writing tasks measuring how evaluative pressure modulates expressive output. Data collection in progress.</p>
+        <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">View the study</a>
+      </div>
+    </div>
+    <p class="research-note fade-in">Submitted to Journal of Consciousness Studies &amp; Neuroscience of Consciousness</p>
+  </div>
 
 <!-- ══════════════ WHERE THIS WORK LIVES ══════════════ -->
 <section id="submissions" style="border-top:1px solid var(--border);">
