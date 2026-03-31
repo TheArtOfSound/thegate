@@ -1999,11 +1999,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const SUPA_URL = 'https://wgzopjrdnyazvhpklzhw.supabase.co';
   const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnem9wanJkbnlhenZocGtsemh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzOTc4NzcsImV4cCI6MjA4OTk3Mzg3N30.8dx5xWljLDZa5PMvE0Ps5q4ZEyuZgx_5FHVnD0WfBjs';
   try {
-    const res = await fetch(SUPA_URL + '/rest/v1/egc_responses?select=t1_wordcount,t2_wordcount,t1_score,t2_score&order=created_at.desc&limit=500', {
+    const res = await fetch(SUPA_URL + '/rest/v1/egc_responses?select=t1_wordcount,t2_wordcount,t1_score,t2_score,t_drop,is_excluded&order=created_at.desc&limit=500', {
       headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
     });
     if (!res.ok) return;
-    const rows = await res.json();
+    const allRows = await res.json();
+    const rows = allRows.filter(r => !r.is_excluded);
     const n = rows.length;
     if (n === 0) return;
 
@@ -2011,13 +2012,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let volDrops = 0, totalVolPct = 0, compressors = 0, expanders = 0, suppressors = 0;
     rows.forEach(r => {
       const wc1 = r.t1_wordcount || 0, wc2 = r.t2_wordcount || 0;
-      const t1 = r.t1_score || 0, t2 = r.t2_score || 0;
-      const volDropped = wc2 < wc1;
-      const qualityHeld = t2 >= t1 * 0.95;
-      if (volDropped) volDrops++;
+      const td = parseFloat(r.t_drop) || 0;
+      if (wc2 < wc1) volDrops++;
       totalVolPct += wc1 > 0 ? ((wc1 - wc2) / wc1 * 100) : 0;
-      if (volDropped && qualityHeld) compressors++;
-      else if (!volDropped && qualityHeld) expanders++;
+      if (Math.abs(td) <= 0.02) compressors++;
+      else if (td < -0.02) expanders++;
       else suppressors++;
     });
     const volPct = Math.round(volDrops / n * 100);
