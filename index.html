@@ -3,2452 +3,948 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Gate — Expression-Gated Consciousness</title>
-<meta name="description" content="Expression-Gated Consciousness — the framework where consciousness emerges from the act of expression. By Bryan & Brandyn Leonard.">
+<title>Expression-Gated Consciousness — Qira LLC</title>
+<meta name="description" content="A formal framework for the gap between cognition and expression. N=344 subjects. Pearson r = −0.988. Qira LLC, Phoenix.">
 <meta name="author" content="Bryan Leonard, Brandyn Leonard">
-<meta name="keywords" content="Expression-Gated Consciousness, EGC, Bryan Leonard, Brandyn Leonard, consciousness theory, expression types, Compressor, Expander, Suppressor, transmission fidelity, resistance term">
-<meta property="og:title" content="The Gate — Expression-Gated Consciousness">
-<meta property="og:description" content="Expression-Gated Consciousness — the framework where consciousness emerges from the act of expression. By Bryan & Brandyn Leonard.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚪</text></svg>">
-<meta name="theme-color" content="#0a0d14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg-primary: #0a0e17;
-    --bg-secondary: #111827;
-    --bg-card: #1a2235;
-    --bg-card-hover: #1f2a40;
-    --teal: #2dd4bf;
-    --teal-dim: #14b8a6;
-    --teal-glow: rgba(45, 212, 191, 0.15);
-    --purple: #a78bfa;
-    --purple-dim: #8b5cf6;
-    --purple-glow: rgba(167, 139, 250, 0.15);
-    --amber: #fbbf24;
-    --amber-glow: rgba(251, 191, 36, 0.15);
-    --red: #f87171;
-    --red-glow: rgba(248, 113, 113, 0.12);
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --border: #1e293b;
-    --border-focus: #334155;
-    --success: #34d399;
+    --paper: #faf8f3;
+    --paper-alt: #f1ede3;
+    --ink: #1a1a1a;
+    --ink-2: #5a5a5a;
+    --ink-3: #8a8680;
+    --rule: #d4d0c4;
+    --accent: #1e3a5f;
+    --accent-hover: #142a47;
+    --measure: 720px;
+    --serif: "EB Garamond", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    --mono: "JetBrains Mono", Menlo, Consolas, monospace;
   }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    min-height: 100vh;
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.65;
+    letter-spacing: -0.003em;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
+  body { padding-top: 42px; padding-bottom: 80px; }
 
-  /* ══════════════ GATE WALL ══════════════ */
-  #gate-wall {
+  /* Running masthead */
+  .masthead {
     position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 24px;
-    overflow: hidden;
-  }
-
-  #gate-wall .gate-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(-45deg, #0a0e17, #111827, #0f172a, #1a1033);
-    background-size: 400% 400%;
-    animation: gateGradient 12s ease infinite;
-    z-index: 0;
-  }
-
-  @keyframes gateGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  #gate-wall canvas.gate-particles {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  #gate-wall .gate-content {
-    position: relative;
-    z-index: 2;
-    max-width: 560px;
-  }
-
-  .gate-label {
-    font-size: 0.75rem;
-    font-weight: 600;
+    top: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 24px 10px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-2);
     text-transform: uppercase;
-    letter-spacing: 4px;
-    color: var(--teal);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: gateFadeUp 1s 0.3s forwards;
-  }
-
-  .gate-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--teal) 50%, var(--purple) 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gateFadeUp 1s 0.5s forwards, shimmer 6s ease infinite;
-    opacity: 0;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .gate-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 16px;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    opacity: 0;
-    animation: gateFadeUp 1s 0.7s forwards;
-  }
-
-  .gate-desc {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: gateFadeUp 1s 0.9s forwards;
-  }
-
-  .gate-cta {
-    opacity: 0;
-    animation: gateFadeUp 1s 1.1s forwards;
-  }
-
-  @keyframes gateFadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .gate-cta a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding: 16px 40px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    text-decoration: none;
-    background: linear-gradient(135deg, var(--teal-dim), var(--teal));
-    color: var(--bg-primary);
-    transition: all 0.3s;
-    box-shadow: 0 0 30px rgba(45, 212, 191, 0.2);
-  }
-
-  .gate-cta a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 40px rgba(45, 212, 191, 0.4);
-  }
-
-  .gate-skip {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    cursor: pointer;
-    padding: 8px 16px;
-    transition: color 0.2s;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    opacity: 0;
-    animation: gateFadeUp 1s 1.4s forwards;
-    margin-top: 20px;
-    display: inline-block;
-  }
-
-  .gate-skip:hover { color: var(--text-secondary); }
-
-  /* Floating geometric shapes for gate wall */
-  .gate-shape {
-    position: absolute;
-    border: 1px solid rgba(45, 212, 191, 0.1);
-    border-radius: 4px;
-    animation: floatShape 20s ease-in-out infinite;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .gate-shape:nth-child(1) { width: 60px; height: 60px; top: 15%; left: 10%; animation-delay: 0s; animation-duration: 18s; border-color: rgba(45, 212, 191, 0.08); }
-  .gate-shape:nth-child(2) { width: 40px; height: 40px; top: 70%; left: 15%; animation-delay: -4s; animation-duration: 22s; border-color: rgba(167, 139, 250, 0.08); border-radius: 50%; }
-  .gate-shape:nth-child(3) { width: 80px; height: 80px; top: 20%; right: 12%; animation-delay: -8s; animation-duration: 25s; border-color: rgba(45, 212, 191, 0.06); transform: rotate(45deg); }
-  .gate-shape:nth-child(4) { width: 30px; height: 30px; top: 60%; right: 20%; animation-delay: -2s; animation-duration: 20s; border-color: rgba(167, 139, 250, 0.1); border-radius: 50%; }
-  .gate-shape:nth-child(5) { width: 50px; height: 50px; bottom: 20%; left: 30%; animation-delay: -6s; animation-duration: 24s; border-color: rgba(45, 212, 191, 0.07); }
-  .gate-shape:nth-child(6) { width: 70px; height: 70px; top: 40%; left: 5%; animation-delay: -10s; animation-duration: 19s; border-color: rgba(167, 139, 250, 0.06); transform: rotate(30deg); }
-
-  @keyframes floatShape {
-    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
-    25% { transform: translateY(-30px) rotate(5deg); opacity: 1; }
-    50% { transform: translateY(-15px) rotate(-3deg); opacity: 0.7; }
-    75% { transform: translateY(-40px) rotate(8deg); opacity: 0.9; }
-  }
-
-  /* ══════════════ NAV ══════════════ */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 12px 24px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: rgba(10, 14, 23, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(30, 41, 59, 0.5);
-    transition: transform 0.3s;
+    align-items: baseline;
+    z-index: 100;
   }
+  .masthead .left { font-weight: 500; color: var(--ink); }
+  .masthead .right { font-weight: 400; }
+  .masthead a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+  .masthead a:hover { border-bottom-color: var(--accent); }
 
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--teal); }
-
-  .nav-links {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: nowrap;
-  }
-
-  .nav-links a {
-    font-size: 0.72rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.2s;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
-  .nav-links a:hover { color: var(--text-primary); }
-  .nav-links a.active { color: var(--teal); }
-
-  .nav-cta {
-    background: linear-gradient(135deg, var(--teal-dim), var(--teal)) !important;
-    color: var(--bg-primary) !important;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.72rem !important;
-    font-weight: 600 !important;
-    transition: transform 0.2s, box-shadow 0.2s !important;
-  }
-
-  .nav-cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(45, 212, 191, 0.3);
-  }
-
-  /* ══════════════ HERO ══════════════ */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 24px 80px;
+  /* Reading column */
+  .paper {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 60px 24px;
     position: relative;
-    overflow: hidden;
   }
 
-  #hero-canvas {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
+  /* Paper header */
+  .paper-header { margin-bottom: 56px; }
+  .paper-title {
+    font-family: var(--serif);
+    font-size: 38px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    color: var(--ink);
   }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 900px;
-    background: radial-gradient(circle, var(--teal-glow) 0%, var(--purple-glow) 35%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: linear-gradient(to top, var(--bg-primary), transparent);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 760px;
-  }
-
-  .hero-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: var(--teal);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: gateFadeUp 0.8s 0.2s forwards;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 10vw, 6rem);
-    font-weight: 700;
-    line-height: 1.05;
-    margin-bottom: 28px;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--teal) 50%, var(--purple) 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gateFadeUp 0.8s 0.4s forwards, shimmer 8s ease infinite;
-    opacity: 0;
-  }
-
-  .hero-subtitle {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  .paper-subtitle {
+    font-family: var(--serif);
+    font-style: italic;
     font-weight: 400;
-    font-style: italic;
-    color: var(--text-secondary);
-    margin-bottom: 44px;
-    line-height: 1.6;
-    min-height: 2em;
+    font-size: 19px;
+    color: var(--ink-2);
+    margin: 0 0 28px 0;
+    line-height: 1.35;
   }
+  .paper-meta {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.7;
+    letter-spacing: 0.005em;
+  }
+  .paper-meta .authors { font-weight: 500; color: var(--ink); }
+  .paper-meta .affil { color: var(--ink-2); }
+  .paper-meta .line { color: var(--ink-2); margin-top: 4px; }
+  .paper-meta a { color: var(--accent); text-decoration: none; }
+  .paper-meta a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-  .hero-subtitle .cursor {
+  .live-badge {
     display: inline-block;
-    width: 2px;
-    height: 1.1em;
-    background: var(--teal);
-    margin-left: 2px;
-    vertical-align: text-bottom;
-    animation: blink 0.8s step-end infinite;
+    margin-top: 18px;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    border: 1px solid var(--rule);
+    padding: 5px 10px;
+    border-radius: 0;
+    background: var(--paper);
+  }
+  .live-badge .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 7px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
   }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  /* Abstract */
+  .abstract {
+    margin: 40px 0 64px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
   }
-
-  .hero-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: gateFadeUp 0.8s 1s forwards;
-  }
-
-  /* ══════════════ BUTTONS ══════════════ */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 16px 36px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-decoration: none;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--teal-dim), var(--teal));
-    color: var(--bg-primary);
-    font-weight: 600;
-    box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(45, 212, 191, 0.35);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border-focus);
-  }
-
-  .btn-secondary:hover {
-    background: var(--bg-card);
-    border-color: var(--text-muted);
-  }
-
-  .btn-purple {
-    background: linear-gradient(135deg, var(--purple-dim), var(--purple));
-    color: var(--bg-primary);
-    font-weight: 600;
-  }
-
-  .btn-purple:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(167, 139, 250, 0.35);
-  }
-
-  /* ══════════════ SECTIONS ══════════════ */
-  section {
-    padding: 100px 24px;
-  }
-
-  .section-container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
   .section-label {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--teal);
-    margin-bottom: 16px;
-    text-align: center;
+    color: var(--ink-2);
+    margin: 0 0 14px 0;
   }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-    line-height: 1.25;
-  }
-
-  .section-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 56px;
+  .abstract p {
+    margin: 0 0 14px 0;
+    font-size: 16.5px;
     line-height: 1.7;
   }
+  .abstract p:last-child { margin-bottom: 0; }
 
-  /* ══════════════ YOU'VE FELT THIS ══════════════ */
-  #felt-this {
-    border-top: 1px solid var(--border);
+  /* Sections */
+  section.paper-section { margin: 0 0 72px 0; position: relative; }
+  h2.section-h {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0 0 28px 0;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--rule);
     position: relative;
-    overflow: hidden;
+    letter-spacing: -0.005em;
   }
-
-  .felt-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  .felt-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 36px 32px;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
-  }
-
-  .felt-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--teal-dim);
-    box-shadow: 0 8px 40px rgba(45, 212, 191, 0.08);
-  }
-
-  .felt-card .card-icon {
-    font-size: 2rem;
-    margin-bottom: 16px;
+  h2.section-h .sect-num {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
     display: block;
+    margin-bottom: 6px;
+  }
+  h3.sub-h {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.35;
+    margin: 32px 0 12px;
+    color: var(--ink);
+  }
+  h3.sub-h .sub-num {
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-right: 10px;
+    vertical-align: 1px;
   }
 
-  .felt-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--teal);
-    margin-bottom: 14px;
+  p { margin: 0 0 20px 0; }
+  p.lead { font-size: 18px; line-height: 1.6; }
+  p.note {
+    font-size: 15px;
+    color: var(--ink-2);
+    font-style: italic;
+    line-height: 1.55;
   }
 
-  .felt-card p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-  }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: var(--accent); }
 
-  .felt-card .gate-visual {
+  ol, ul { padding-left: 24px; margin: 0 0 24px 0; }
+  li { margin-bottom: 8px; }
+  ol.numbered-defs { padding-left: 0; list-style: none; counter-reset: def-counter; }
+  ol.numbered-defs > li {
+    counter-increment: def-counter;
+    position: relative;
+    padding-left: 36px;
+    margin-bottom: 16px;
+    line-height: 1.55;
+  }
+  ol.numbered-defs > li::before {
+    content: counter(def-counter, decimal) ".";
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--accent);
     position: absolute;
-    bottom: 0;
     left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--teal), var(--purple));
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-
-  .felt-card:hover .gate-visual {
-    opacity: 1;
-  }
-
-  /* Gate narrowing animation on card */
-  .felt-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, var(--teal-glow), transparent);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-
-  .felt-card:hover::after { opacity: 1; }
-
-  /* ══════════════ THE SCIENCE ══════════════ */
-  #science {
-    border-top: 1px solid var(--border);
-  }
-
-  .science-tracks {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 48px;
-  }
-
-  .track-btn {
-    padding: 10px 28px;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    background: transparent;
-    color: var(--text-secondary);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.88rem;
+    top: 6px;
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s;
   }
 
-  .track-btn.active {
-    background: var(--bg-card);
-    border-color: var(--teal);
-    color: var(--teal);
-  }
-
-  .track-btn:hover:not(.active) {
-    border-color: var(--border-focus);
-    color: var(--text-primary);
-  }
-
-  .track-content {
-    display: none;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .track-content.active { display: block; }
-
-  /* Plain language track */
-  .plain-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    position: relative;
-  }
-
-  .plain-step {
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-    padding: 28px 0;
-    position: relative;
-  }
-
-  .plain-step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: 23px;
-    top: 70px;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, var(--teal-dim), transparent);
-  }
-
-  .step-num {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    border-radius: 50%;
-    background: var(--teal-glow);
-    border: 2px solid var(--teal);
-    color: var(--teal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1rem;
-  }
-
-  .step-text h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    margin-bottom: 6px;
-    color: var(--text-primary);
-  }
-
-  .step-text p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-
-  /* Gate flow diagram */
-  .gate-diagram {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    margin: 48px auto 0;
-    max-width: 600px;
-    flex-wrap: wrap;
-  }
-
-  .diagram-node {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 24px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-
-  .diagram-node.knowledge {
-    border-color: var(--purple-dim);
-  }
-
-  .diagram-node.gate {
-    border-color: var(--teal);
-    position: relative;
-  }
-
-  .diagram-node.expression {
-    border-color: var(--amber);
-  }
-
-  .diagram-node .node-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-
-  .diagram-node .node-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-
-  .diagram-node.knowledge .node-title { color: var(--purple); }
-  .diagram-node.gate .node-title { color: var(--teal); }
-  .diagram-node.expression .node-title { color: var(--amber); }
-
-  .diagram-arrow {
-    font-size: 1.4rem;
-    color: var(--text-muted);
-    padding: 0 12px;
-    flex-shrink: 0;
-  }
-
-  .diagram-label {
-    width: 100%;
-    text-align: center;
-    margin-top: 12px;
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  /* Technical track */
-  .equation-hero {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 40px;
-    text-align: center;
-    margin-bottom: 36px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .equation-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 0%, var(--teal-glow) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .equation-hero > * { position: relative; z-index: 1; }
-
-  .equation-main {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.3rem, 3vw, 1.8rem);
-    font-style: italic;
-    color: var(--teal);
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-  }
-
-  .equation-sub {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 0;
-  }
-
-  .terms-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 36px;
-  }
-
-  .term-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px;
-    transition: border-color 0.3s, transform 0.3s;
-    cursor: default;
-  }
-
-  .term-card:hover {
-    border-color: var(--teal-dim);
-    transform: translateY(-2px);
-  }
-
-  .term-symbol {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--teal);
-    margin-bottom: 6px;
-  }
-
-  .term-name {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-
-  .term-desc {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-
-  /* g(K) graph */
-  .graph-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
-    text-align: center;
-  }
-
-  .graph-container h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    margin-bottom: 4px;
-    color: var(--text-primary);
-  }
-
-  .graph-container .graph-subtitle {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-  }
-
-  #gk-graph {
-    width: 100%;
-    max-width: 500px;
-    height: 250px;
-    margin: 0 auto;
+  /* Equation */
+  .equation {
     display: block;
-  }
-
-  /* ══════════════ THREE TYPES ══════════════ */
-  #types {
-    border-top: 1px solid var(--border);
-  }
-
-  .types-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 48px;
-  }
-
-  .type-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 36px 28px;
-    transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+    font-family: var(--mono);
+    font-size: 17px;
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    margin: 28px auto;
+    padding: 22px 12px;
+    background: var(--paper-alt);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    letter-spacing: 0.01em;
+    line-height: 1.6;
   }
-
-  .type-card:hover { transform: translateY(-6px); }
-
-  .type-card.teal:hover { border-color: var(--teal); box-shadow: 0 8px 40px rgba(45, 212, 191, 0.1); }
-  .type-card.purple:hover { border-color: var(--purple); box-shadow: 0 8px 40px rgba(167, 139, 250, 0.1); }
-  .type-card.red:hover { border-color: var(--red); box-shadow: 0 8px 40px rgba(248, 113, 113, 0.1); }
-
-  .type-card-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    margin: 0 auto 20px;
-    position: relative;
-  }
-
-  /* Icon pulse animation */
-  .type-card-icon::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    animation: iconPulse 3s ease-in-out infinite;
-  }
-
-  .type-card.teal .type-card-icon::after { border-color: rgba(45, 212, 191, 0.2); }
-  .type-card.purple .type-card-icon::after { border-color: rgba(167, 139, 250, 0.2); }
-  .type-card.red .type-card-icon::after { border-color: rgba(248, 113, 113, 0.2); }
-
-  @keyframes iconPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.15); opacity: 0.4; }
-  }
-
-  .type-card.teal .type-card-icon {
-    background: var(--teal-glow);
-    border: 2px solid var(--teal);
-    color: var(--teal);
-  }
-
-  .type-card.purple .type-card-icon {
-    background: var(--purple-glow);
-    border: 2px solid var(--purple);
-    color: var(--purple);
-  }
-
-  .type-card.red .type-card-icon {
-    background: var(--red-glow);
-    border: 2px solid var(--red);
-    color: var(--red);
-  }
-
-  .type-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
-    margin-bottom: 10px;
-  }
-
-  .type-card.teal h3 { color: var(--teal); }
-  .type-card.purple h3 { color: var(--purple); }
-  .type-card.red h3 { color: var(--red); }
-
-  .type-card .type-desc {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-
-  .type-card .type-example {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+  .equation em {
+    font-family: var(--serif);
     font-style: italic;
+    font-size: 19px;
+    letter-spacing: 0;
   }
 
-  .type-card .type-stat {
-    display: inline-block;
-    margin-top: 14px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 4px 12px;
-    border-radius: 100px;
+  code, .ms { font-family: var(--mono); font-size: 14.5px; background: transparent; }
+
+  /* Figures and tables */
+  figure { margin: 32px 0; }
+  figure canvas {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: 280px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
   }
-
-  .type-card.teal .type-stat { background: var(--teal-glow); color: var(--teal); }
-  .type-card.purple .type-stat { background: var(--purple-glow); color: var(--purple); }
-  .type-card.red .type-stat { background: var(--red-glow); color: var(--red); }
-
-  .types-cta { text-align: center; }
-
-  /* ══════════════ LIVE STATS ══════════════ */
-  #stats {
-    border-top: 1px solid var(--border);
-    background: var(--bg-secondary);
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-bottom: 40px;
-  }
-
-  .stat-item {
+  .caption {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-2);
+    margin-top: 12px;
     text-align: center;
-    padding: 32px 20px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    transition: transform 0.3s;
-  }
-
-  .stat-item:hover { transform: translateY(-4px); }
-
-  .stat-number {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3rem);
-    font-weight: 700;
-    color: var(--teal);
-    margin-bottom: 4px;
-  }
-
-  .stat-suffix {
-    font-size: 0.7em;
-    color: var(--teal-dim);
-  }
-
-  .stat-label {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
     line-height: 1.5;
+    letter-spacing: 0.01em;
   }
-
-  .stats-cta {
-    text-align: center;
-  }
-
-  /* ══════════════ RESEARCH ══════════════ */
-  #research {
-    border-top: 1px solid var(--border);
-  }
-
-  .research-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-  }
-
-  .research-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 36px 32px;
-    transition: transform 0.3s, border-color 0.3s;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .research-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-focus);
-  }
-
-  .research-icon {
-    font-size: 1.75rem;
-    margin-bottom: 16px;
-  }
-
-  .research-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    margin-bottom: 8px;
-  }
-
-  .research-card p {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 20px;
-    flex-grow: 1;
-  }
-
-  .research-card a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.88rem;
+  .caption b, .caption strong {
+    color: var(--ink);
     font-weight: 500;
-    color: var(--teal);
-    text-decoration: none;
-    transition: gap 0.2s;
   }
 
-  .research-card a:hover { gap: 10px; }
-  .research-card a::after { content: '\2192'; }
+  table.academic {
+    width: 100%;
+    margin: 24px 0 8px;
+    border-collapse: collapse;
+    font-family: var(--serif);
+    font-size: 16px;
+  }
+  table.academic thead th {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-2);
+    text-align: left;
+    padding: 10px 12px 8px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+  }
+  table.academic tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  table.academic tbody tr:last-child td { border-bottom: 1px solid var(--ink); }
+  table.academic td.num, table.academic th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 14.5px; }
+  table.academic td.lbl { color: var(--ink-2); font-size: 14.5px; font-family: var(--sans); letter-spacing: 0.01em; }
 
-  .research-note {
-    text-align: center;
-    margin-top: 32px;
-    font-size: 0.88rem;
-    color: var(--text-muted);
+  /* Blockquote / pullout */
+  blockquote {
+    margin: 28px 0;
+    padding: 16px 22px;
+    border-left: 2px solid var(--accent);
+    background: var(--paper-alt);
     font-style: italic;
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  blockquote p:last-child { margin-bottom: 0; }
+  blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-2);
   }
 
-  /* ══════════════ EMAIL CAPTURE ══════════════ */
-  #subscribe {
-    border-top: 1px solid var(--border);
-  }
-
-  .subscribe-box {
-    max-width: 580px;
-    margin: 0 auto;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 52px 44px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .subscribe-box::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--purple-glow) 0%, transparent 55%);
-    pointer-events: none;
-  }
-
-  .subscribe-box > * { position: relative; z-index: 1; }
-
-  .subscribe-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-  }
-
-  .subscribe-box > p {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-    line-height: 1.7;
-  }
-
-  .email-form {
+  /* Track toggle */
+  .track-toggle {
     display: flex;
-    gap: 12px;
-    margin-bottom: 14px;
+    gap: 0;
+    margin: 18px 0 24px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
   }
-
-  .email-form input {
+  .track-toggle button {
     flex: 1;
-    padding: 15px 20px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.92rem;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-
-  .email-form input::placeholder { color: var(--text-muted); }
-
-  .email-form input:focus {
-    border-color: var(--purple-dim);
-    box-shadow: 0 0 0 3px var(--purple-glow);
-  }
-
-  .email-form button {
-    padding: 15px 32px;
-    background: linear-gradient(135deg, var(--purple-dim), var(--purple));
-    border: none;
-    border-radius: 12px;
-    color: var(--bg-primary);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.92rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    white-space: nowrap;
-  }
-
-  .email-form button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(167, 139, 250, 0.3);
-  }
-
-  .subscribe-note {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-  }
-
-  .subscribe-success {
-    display: none;
-    color: var(--success);
-    font-size: 0.92rem;
-    margin-top: 14px;
-    padding: 10px 20px;
-    background: rgba(52, 211, 153, 0.08);
-    border-radius: 8px;
-  }
-
-  .subscribe-success.visible { display: block; }
-
-  /* ══════════════ FOOTER ══════════════ */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 56px 24px;
-    text-align: center;
-  }
-
-  .footer-content {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 28px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-  }
-
-  .footer-links a {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--teal); }
-
-  footer p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  footer a {
-    color: var(--teal);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  footer a:hover { color: var(--text-primary); }
-
-  /* ══════════════ MOBILE NAV ══════════════ */
-  .mobile-toggle {
-    display: none;
     background: none;
     border: none;
-    color: var(--text-primary);
-    font-size: 1.5rem;
+    padding: 10px 14px;
     cursor: pointer;
-    padding: 4px;
+    color: var(--ink-2);
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    font-weight: 500;
+    transition: none;
   }
-
-  /* ══════════════ RESPONSIVE ══════════════ */
-  @media (max-width: 768px) {
-    nav { padding: 12px 20px; }
-
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
-      flex-direction: column;
-      padding: 16px 20px;
-      gap: 16px;
-    }
-
-    .nav-links.open { display: flex; }
-    .mobile-toggle { display: block; }
-
-    .hero { padding: 100px 20px 60px; }
-    section { padding: 64px 20px; }
-
-    .felt-grid { grid-template-columns: 1fr; }
-    .types-grid { grid-template-columns: 1fr; }
-    .terms-grid { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: 1fr; gap: 16px; }
-
-    .email-form { flex-direction: column; }
-    .subscribe-box { padding: 32px 24px; }
-
-    .hero-buttons { flex-direction: column; align-items: center; }
-    .btn { width: 100%; max-width: 320px; }
-
-    .gate-diagram {
-      flex-direction: column;
-    }
-
-    .diagram-arrow {
-      transform: rotate(90deg);
-      padding: 6px 0;
-    }
-
-    .gate-shape:nth-child(3),
-    .gate-shape:nth-child(6) { display: none; }
+  .track-toggle button.active {
+    color: var(--ink);
+    background: var(--paper-alt);
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: -1px;
   }
+  .track-toggle button + button { border-left: 1px solid var(--rule); }
 
-  @media (max-width: 480px) {
-    .science-tracks { flex-direction: column; align-items: center; }
-    .track-btn { width: 100%; max-width: 240px; }
+  .track-content { display: none; }
+  .track-content.active { display: block; }
+
+  /* References */
+  .references {
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
   }
-
-  /* ══════════════ FADE-IN ══════════════ */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+  .references h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    margin: 0 0 18px 0;
   }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .references ol {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: ref-counter;
+    font-size: 15px;
+    line-height: 1.55;
   }
-
-  .fade-in-delay-1 { transition-delay: 0.1s; }
-  .fade-in-delay-2 { transition-delay: 0.2s; }
-  .fade-in-delay-3 { transition-delay: 0.3s; }
-  .fade-in-delay-4 { transition-delay: 0.4s; }
-
-  /* ══════════════ ZONE DIVIDERS ══════════════ */
-  .zone-divider {
-    padding: 48px 24px 0;
-    text-align: center;
+  .references ol > li {
+    counter-increment: ref-counter;
     position: relative;
+    padding-left: 32px;
+    margin-bottom: 14px;
+    color: var(--ink);
   }
-  .zone-divider::before {
-    content: '';
+  .references ol > li::before {
+    content: "[" counter(ref-counter) "]";
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-2);
     position: absolute;
-    top: 24px;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-focus), transparent);
+    left: 0;
+    top: 3px;
   }
-  .zone-label {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: var(--text-muted);
-    background: var(--bg-primary);
-    padding: 0 20px;
+
+  /* Participation card */
+  .participation {
+    margin-top: 72px;
+    padding: 32px;
+    background: var(--paper-alt);
+    border: 1px solid var(--rule);
+  }
+  .participation h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    margin: 0 0 14px;
+  }
+  .participation p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .participation .check-list {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0;
+    font-size: 15px;
+  }
+  .participation .check-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .participation .check-list li:last-child { border-bottom: none; }
+  .participation input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--ink-2);
+    background: var(--paper);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 4px;
     position: relative;
   }
+  .participation input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .participation input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px; top: 0px;
+    width: 5px; height: 10px;
+    border: solid var(--paper);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .participation label { cursor: pointer; line-height: 1.5; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--paper);
+    border: 1px solid var(--accent);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 0;
+    transition: background 0.1s linear;
+  }
+  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); border-bottom: 1px solid var(--accent-hover); }
+  .btn-primary:disabled {
+    background: var(--ink-3);
+    border-color: var(--ink-3);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Footer */
+  .colophon {
+    margin-top: 80px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--ink-2);
+    line-height: 1.7;
+  }
+  .colophon a { color: var(--accent); }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .paper { padding: 40px 22px; }
+    .paper-title { font-size: 30px; }
+    .paper-subtitle { font-size: 17px; }
+    h2.section-h { font-size: 22px; }
+    .masthead { padding: 10px 16px 8px; font-size: 11px; }
+    .masthead .right { display: none; }
+    body { padding-top: 36px; }
+    table.academic { font-size: 14.5px; }
+    table.academic thead th { font-size: 10.5px; padding: 8px 8px; }
+    table.academic tbody td { padding: 7px 8px; }
+    table.academic td.num, table.academic th.num { font-size: 13px; }
+    .equation { font-size: 15px; padding: 16px 8px; }
+    .participation { padding: 22px; }
+  }
+
+  @media print {
+    .masthead, .participation, .track-toggle { display: none; }
+    body { padding: 0; }
+    .paper { padding: 0; max-width: 100%; }
+  }
+
+  ::selection { background: var(--accent); color: var(--paper); }
 </style>
 </head>
 <body>
 
-<!-- ══════════════ GATE WALL ══════════════ -->
-<div id="gate-wall">
-  <div class="gate-bg"></div>
-  <div class="gate-shape"></div>
-  <div class="gate-shape"></div>
-  <div class="gate-shape"></div>
-  <div class="gate-shape"></div>
-  <div class="gate-shape"></div>
-  <div class="gate-shape"></div>
-  <canvas class="gate-particles" id="gateParticles"></canvas>
-  <div class="gate-content">
-    <div class="gate-label">Expression-Gated Consciousness</div>
-    <h1 class="gate-title">The Gate</h1>
-    <p class="gate-subtitle">To enter, you must first experience it.</p>
-    <p class="gate-desc">Take the 10-minute writing study to discover your expression type. Once complete, you'll unlock the full framework, research, and your results.</p>
-    <div class="gate-cta">
-      <a href="https://theartofsound.github.io/egcstudy/">Take the Study &rarr;</a>
+<header class="masthead" role="banner">
+  <span class="left">Expression-Gated Consciousness · Qira LLC</span>
+  <span class="right">Research Update · April 2026 · <a href="#participation">Participate</a></span>
+</header>
+
+<article class="paper">
+
+  <header class="paper-header">
+    <h1 class="paper-title">Expression-Gated Consciousness</h1>
+    <p class="paper-subtitle">A Formal Framework for the Gap Between Cognition and Expression</p>
+    <div class="paper-meta">
+      <div class="authors">Bryan Leonard &middot; Brandyn Leonard</div>
+      <div class="affil">Qira LLC &middot; Phoenix, Arizona</div>
+      <div class="line">Research Update &middot; N=<span class="egc-n">344</span> &middot; April 2026</div>
+      <div class="line">Preprint: <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener">zenodo.org/records/19242315</a> &middot; Submitted: <em>Neuroscience of Consciousness</em> NCONSC-2026-103</div>
+      <div class="line">Contact: <a href="mailto:bryanleonard@imagineqira.com">bryanleonard@imagineqira.com</a></div>
     </div>
-    <button class="gate-skip" onclick="document.getElementById('gate-wall').style.display='none'; document.getElementById('main-content').style.display='block'; initHero();">Just let me read the research</button>
-  </div>
-</div>
+    <div class="live-badge"><span class="dot"></span>Live study &middot; <span class="egc-refresh">updating</span></div>
+  </header>
 
-<div id="main-content" style="display:none;">
+  <section class="abstract" aria-labelledby="abstract-label">
+    <p class="section-label" id="abstract-label">Abstract</p>
+    <p>Expression-Gated Consciousness (EGC) is a formal framework modeling the gap between what a person consciously knows and what they express under pressure. The central claim is that a measurable resistance variable <em>r(t)</em> gates conscious output, and that this gating mechanism operates bidirectionally &mdash; suppressing expression outward and preventing knowledge update inward.</p>
+    <p>This document reports findings from the live empirical study as of April 2026, now at <span class="egc-n">344</span> subjects across 20+ countries. The central prediction of EGC &mdash; an inverse relationship between resistance and comfort &mdash; holds at <em>r</em> = <span class="egc-r">&minus;0.988</span> across the full dataset. A three-type response structure (Compressors, Suppressors, Expanders) has remained stable from N=9 through N=<span class="egc-n">344</span>. A secondary finding &mdash; a small population of zero-resistance subjects who suppress at 33&times; the dataset mean &mdash; suggests a second suppression mechanism operating independently of conscious resistance.</p>
+  </section>
 
-<!-- ══════════════ NAV ══════════════ -->
-<nav>
-  <a href="#" class="nav-logo">The <span>Gate</span></a>
-  <button class="mobile-toggle" onclick="toggleNav()" aria-label="Toggle menu">&#9776;</button>
-  <div class="nav-links" id="navLinks">
-    <a href="#felt-this">Experience</a>
-    <a href="#science">Science</a>
-    <a href="#methodology">Research</a>
-    <a href="https://theartofsound.github.io/egcstudy/" class="nav-cta">Take the Study</a>
-  </div>
-</nav>
+  <!-- §1 Theoretical Framework -->
+  <section class="paper-section" id="framework">
+    <h2 class="section-h"><span class="sect-num">§1 &middot; Theoretical Framework</span>The equation and its terms</h2>
 
-<!-- ══════════════ HERO ══════════════ -->
-<div class="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-content">
-    <div class="hero-label">Expression-Gated Consciousness</div>
-    <h1>The Gate</h1>
-    <p class="hero-subtitle" id="heroSubtitle"><span class="cursor"></span></p>
-    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:28px;font-family:'Inter',sans-serif;">A framework by <strong style="color:var(--text-secondary);">Bryan Leonard</strong> &amp; <strong style="color:var(--text-secondary);">Brandyn Leonard</strong></p>
-    <div class="hero-buttons">
-      <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary">Take the Study &rarr;</a>
-      <a href="#felt-this" class="btn btn-secondary">Learn More</a>
-    </div>
-  </div>
-</div>
+    <p>EGC posits that the gap between internal knowledge state and expressed output is governed by a single composite equation:</p>
 
-<!-- ══════════════ YOU'VE FELT THIS ══════════════ -->
-<section id="felt-this">
-  <div class="section-container">
-    <div class="section-label fade-in">You've Felt This</div>
-    <h2 class="section-title fade-in">The gate is something you already know</h2>
-    <p class="section-subtitle fade-in">You may not have had a name for it. But you've lived it &mdash; probably today.</p>
-    <div class="felt-grid">
-      <div class="felt-card fade-in fade-in-delay-1">
-        <span class="card-icon">&#128172;</span>
-        <h3>The Meeting</h3>
-        <p>You know the answer. Everyone is looking at you. Your mouth opens... and a simpler version comes out. Not because you don't know &mdash; because something between knowing and saying narrowed.</p>
-        <div class="gate-visual"></div>
-      </div>
-      <div class="felt-card fade-in fade-in-delay-2">
-        <span class="card-icon">&#127909;</span>
-        <h3>The Camera</h3>
-        <p>You're articulate with friends. Eloquent in the shower. But the moment someone hits record, the words that were flowing freely moments ago become stilted, careful, smaller.</p>
-        <div class="gate-visual"></div>
-      </div>
-      <div class="felt-card fade-in fade-in-delay-3">
-        <span class="card-icon">&#128221;</span>
-        <h3>The Test</h3>
-        <p>You studied for weeks. You understand the material deeply. But sitting in that exam room, under the clock, under the weight of evaluation &mdash; your mind goes partly blank. The knowledge is still there. The gate just closed.</p>
-        <div class="gate-visual"></div>
-      </div>
-      <div class="felt-card fade-in fade-in-delay-4">
-        <span class="card-icon">&#127926;</span>
-        <h3>The Stage</h3>
-        <p>You rehearsed a hundred times. You know this cold. But with an audience watching, your performance becomes a compressed version of what you can actually do.</p>
-        <div class="gate-visual"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ THREE TYPES ══════════════ -->
-<section id="types">
-  <div class="section-container">
-    <div class="section-label fade-in">The Three Types</div>
-    <h2 class="section-title fade-in">How does your gate respond to pressure?</h2>
-    <p class="section-subtitle fade-in">Everyone has a pattern. Discover yours.</p>
-    <div class="types-grid">
-      <div class="type-card teal fade-in fade-in-delay-1">
-        <div class="type-card-icon">&#9673;</div>
-        <h3>Compressor</h3>
-        <p class="type-desc">Volume drops, quality holds. Under pressure, you say less &mdash; but what you say maintains its depth and precision. The gate narrows, but the signal stays clean.</p>
-        <p class="type-example">"In meetings I give the short version. Not because I can't explain &mdash; because the room makes me edit in real time."</p>
-        <span class="type-stat">45% of participants</span>
-      </div>
-      <div class="type-card purple fade-in fade-in-delay-2">
-        <div class="type-card-icon">&#10022;</div>
-        <h3>Expander</h3>
-        <p class="type-desc">Pressure opens the gate. Your volume and richness increase when the stakes rise. You thrive under evaluation &mdash; pressure becomes fuel for expression.</p>
-        <p class="type-example">"I come alive in presentations. The audience doesn't make me smaller &mdash; it makes me sharper."</p>
-        <span class="type-stat">26% of participants</span>
-      </div>
-      <div class="type-card red fade-in fade-in-delay-3">
-        <div class="type-card-icon">&#9826;</div>
-        <h3>Suppressor</h3>
-        <p class="type-desc">Both volume and quality decline under pressure. The resistance term dominates. This is not a weakness &mdash; it means your deepest insights emerge in low-pressure environments.</p>
-        <p class="type-example">"My best ideas come in the shower, in my journal, walking alone. Give me space and I'll give you depth."</p>
-        <span class="type-stat">29% of participants</span>
-      </div>
-    </div>
-  </div>
-
-<div style="text-align:center;padding:48px 24px;">
-  <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary" style="font-size:1.1rem;padding:20px 48px;">Discover Your Type &rarr;</a>
-  <p style="font-size:0.82rem;color:var(--text-muted);margin-top:12px;">10 minutes. Two writing tasks. Instant results.</p>
-</div>
-
-<div class="zone-divider"><span class="zone-label">The Science</span></div>
-
-<!-- ══════════════ THE SCIENCE ══════════════ -->
-<section id="science">
-  <div class="section-container">
-    <h2 class="section-title fade-in">What is Expression-Gated Consciousness?</h2>
-    <p class="section-subtitle fade-in">One framework. Two ways to understand it.</p>
-
-    <div class="science-tracks fade-in">
-      <button class="track-btn active" onclick="switchTrack('plain')">Plain Language</button>
-      <button class="track-btn" onclick="switchTrack('technical')">Technical</button>
+    <div class="equation">
+      &Psi;(<em>t</em>) = &Phi; &middot; <em>g</em>(<em>K</em>(<em>t</em>)) &middot; <em>T</em>(<em>t</em>) &middot; (1 &minus; <em>r</em>(<em>t</em>))
     </div>
 
-    <!-- PLAIN LANGUAGE TRACK -->
+    <p>Where <em>&Psi;(t)</em> is conscious expression output at time <em>t</em>; <em>&Phi;</em> is baseline expressive capacity; <em>g</em>(<em>K</em>(<em>t</em>)) is the gate function applied to knowledge integration <em>K</em>; <em>T</em>(<em>t</em>) is temporal alignment; and <em>r</em>(<em>t</em>) is the resistance variable gating expression.</p>
+
+    <div class="track-toggle" role="tablist">
+      <button class="active" role="tab" data-track="plain">Plain Language</button>
+      <button role="tab" data-track="technical">Technical</button>
+    </div>
+
     <div class="track-content active" id="track-plain">
-      <div class="plain-steps fade-in">
-        <div class="plain-step">
-          <div class="step-num">1</div>
-          <div class="step-text">
-            <h4>Your mind has a gate</h4>
-            <p>Between what you know and what you express, there's an active mechanism &mdash; a gate. It's not a flaw. It's a fundamental feature of how consciousness reaches the outside world.</p>
-          </div>
-        </div>
-        <div class="plain-step">
-          <div class="step-num">2</div>
-          <div class="step-text">
-            <h4>Pressure changes the gate &mdash; but not the way we expected</h4>
-            <p>We originally hypothesized that evaluative pressure would uniformly suppress expression. What the data actually shows is more interesting: pressure doesn't close the gate for everyone. For some people it narrows. For others it opens wider. The gate responds &mdash; but the direction depends on the person.</p>
-          </div>
-        </div>
-        <div class="plain-step">
-          <div class="step-num">3</div>
-          <div class="step-text">
-            <h4>Three distinct patterns emerge</h4>
-            <p>Some people compress &mdash; say less but maintain quality. Others expand &mdash; pressure becomes fuel and their expression gets richer. And some suppress &mdash; both volume and depth decline. At 344 subjects, the three-type split is Compressors 40%, Suppressors 30%, Expanders 30%. The gate doesn't just close. It reveals who you are.</p>
-          </div>
-        </div>
-        <div class="plain-step">
-          <div class="step-num">4</div>
-          <div class="step-text">
-            <h4>We can measure it</h4>
-            <p>A simple writing test &mdash; one with no pressure, one with evaluative pressure &mdash; reveals your expression type in about 10 minutes. The differences are real, consistent, and reveal something fundamental about how your mind works.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="gate-diagram fade-in">
-        <div class="diagram-node knowledge">
-          <div class="node-label">Internal</div>
-          <div class="node-title">Deep Knowledge</div>
-        </div>
-        <div class="diagram-arrow">&rarr;</div>
-        <div class="diagram-node gate">
-          <div class="node-label">Modulator</div>
-          <div class="node-title">The Gate</div>
-        </div>
-        <div class="diagram-arrow">&rarr;</div>
-        <div class="diagram-node expression">
-          <div class="node-label">External</div>
-          <div class="node-title">Expression</div>
-        </div>
-        <div class="diagram-label">Under pressure, the gate responds &mdash; the direction depends on the person</div>
-      </div>
+      <p>Most people have had the experience of knowing what they want to say and not being able to say it &mdash; under evaluation, under judgment, in a room where the stakes feel high. EGC treats that gap not as a failure of will but as a measurable, mechanical property of the expression system. The term <em>r</em>(<em>t</em>) captures the resistance in that moment: how much the system is dampening its own output. The term <em>g</em>(<em>K</em>) captures the knowledge gate: a parabola that peaks when knowledge is balanced and collapses when a person is either under-informed or so specialized that they cannot translate to an outside audience. <em>&Phi;</em> is who you are when nothing is in the way. <em>T</em>(<em>t</em>) is whether the moment fits.</p>
     </div>
-
-    <!-- TECHNICAL TRACK -->
     <div class="track-content" id="track-technical">
-      <div class="equation-hero fade-in">
-        <div class="equation-main">&Psi;(t) = &Phi; &middot; g(K(t)) &middot; T(t) &middot; (1 &minus; r(t))</div>
-        <div class="equation-sub">The master equation of Expression-Gated Consciousness<br><span style="font-size:0.75rem;color:var(--text-muted);">Leonard &amp; Leonard, 2026 &middot; g(K) = 4K(1&minus;K) contributed by Brandyn Leonard</span></div>
-      </div>
-
-      <div class="terms-grid fade-in">
-        <div class="term-card">
-          <div class="term-symbol">&Phi;</div>
-          <div class="term-name">Integrated Information</div>
-          <div class="term-desc">How much your brain connects and integrates information. The raw substrate of conscious experience &mdash; borrowed from IIT but recontextualized as one factor among several.</div>
-        </div>
-        <div class="term-card">
-          <div class="term-symbol">g(K)</div>
-          <div class="term-name">Conviction Accessibility</div>
-          <div class="term-desc">g(K) = 4K(1&minus;K) &mdash; a parabola that peaks at moderate conviction. Both absolute certainty and total uncertainty suppress depth access. The richest thought lives in the middle.</div>
-        </div>
-        <div class="term-card">
-          <div class="term-symbol">T(t)</div>
-          <div class="term-name">Transmission Fidelity</div>
-          <div class="term-desc">How much of your internal state reaches expression. The bandwidth of the channel from inner experience to outer articulation &mdash; always less than perfect, always lossy. Subjects reporting low evaluative awareness continue to show meaningful T drops even under the improved study design &mdash; a second suppression mechanism operates independently of conscious resistance.</div>
-        </div>
-        <div class="term-card">
-          <div class="term-symbol">r(t)</div>
-          <div class="term-name">Resistance &mdash; The Gate</div>
-          <div class="term-desc">The gate itself. What closes under evaluative pressure. The novel term that existing theories of consciousness leave out &mdash; and the key to understanding why you know more than you say.</div>
-        </div>
-      </div>
-
-      <div class="graph-container fade-in">
-        <h4>The Conviction Accessibility Function</h4>
-        <p class="graph-subtitle">g(K) = 4K(1&minus;K) &mdash; depth access peaks at moderate conviction</p>
-        <canvas id="gk-graph"></canvas>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ LIVE STATS ══════════════ -->
-<section id="stats">
-  <div class="section-container">
-    <div class="section-label fade-in">Live Study Data</div>
-    <h2 class="section-title fade-in">The numbers so far</h2>
-    <p class="section-subtitle fade-in">Real data from real participants. The study is ongoing.</p>
-    <div class="stats-grid fade-in">
-      <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="39">0</span><span class="stat-suffix">+</span></div>
-        <div class="stat-label">Participants</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="3">0</span></div>
-        <div class="stat-label">Distinct expression types identified</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number"><span class="counter" data-target="60">0</span><span class="stat-suffix">%</span></div>
-        <div class="stat-label">Show T_drop above 0.02 detection threshold (59.8% of subjects)</div>
-      </div>
-    </div>
-    <div class="fade-in" style="background:linear-gradient(135deg,rgba(45,212,191,0.06),rgba(167,139,250,0.04));border:1px solid rgba(45,212,191,0.15);border-radius:12px;padding:20px;margin-top:24px;text-align:center;">
-      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin:0;"><strong style="color:var(--text-primary);">Most reliable finding:</strong> Subjects with high resistance (r &ge; 0.5) report mean comfort of 4.54/10, while low-resistance subjects (r &lt; 0.2) report 9.16/10 &mdash; a 4.62-point gap stable across every dataset update from N=9 through N=344.</p>
-    </div>
-    <div class="fade-in" style="background:linear-gradient(135deg,rgba(251,146,60,0.06),rgba(45,212,191,0.04));border:1px solid rgba(251,146,60,0.15);border-radius:12px;padding:20px;margin-top:16px;text-align:center;">
-      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin:0;"><strong style="color:var(--text-primary);">Quantitative finding:</strong> Comfort &times; resistance Pearson r = &minus;0.988 across 344 subjects &mdash; the headline inverse correlation, stable from N=9 through N=344. Resistance &times; T_drop is a weaker secondary correlation (r = 0.052); resistance predicts comfort strongly, expression drop only weakly. A subset of subjects with r = 0 who nonetheless suppress (22 subjects, 9 suppressing at 33&times; the dataset mean) suggests a second suppression mechanism operating independent of conscious resistance.</p>
-    </div>
-    <div class="fade-in" style="background:linear-gradient(135deg,rgba(167,139,250,0.06),rgba(251,146,60,0.04));border:1px solid rgba(167,139,250,0.15);border-radius:12px;padding:20px;margin-top:16px;text-align:center;">
-      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin:0;"><strong style="color:var(--text-primary);">Confirmed finding:</strong> Subjects reporting low evaluative awareness continue to show meaningful T drops even under the improved study design &mdash; a pattern confirmed across both the original and updated methodology. A second suppression mechanism operates independently of conscious resistance.</p>
-    </div>
-    <div class="stats-cta fade-in">
-      <a href="https://theartofsound.github.io/egcstudy/" class="btn btn-primary">Contribute Your Data &rarr;</a>
-    </div>
-  </div>
-
-<!-- ══════════════ APPLICATIONS ══════════════ -->
-<section id="applications" style="border-top:1px solid var(--border);">
-  <div class="section-container">
-    <div class="section-label fade-in">Why This Matters</div>
-    <h2 class="section-title fade-in">Real-world applications</h2>
-    <p class="section-subtitle fade-in">EGC isn't just theory. It changes how we design systems that depend on human expression.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:32px;">
-
-      <div class="fade-in fade-in-delay-1" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform 0.3s,border-color 0.3s;">
-        <div style="font-size:1.75rem;margin-bottom:12px;">&#127891;</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;">Education</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">Standardized tests penalize Suppressors. A student who understands calculus deeply but freezes during exams isn't failing at math &mdash; they're failing at expression under evaluative pressure. EGC explains why &mdash; and how to design assessments that don't close the gate.</p>
-      </div>
-
-      <div class="fade-in fade-in-delay-2" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform 0.3s,border-color 0.3s;">
-        <div style="font-size:1.75rem;margin-bottom:12px;">&#128188;</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;">Hiring</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">Interview anxiety is a resistance spike. The traditional interview selects for Expanders and filters out Compressors and Suppressors &mdash; who may be more capable, just worse at performing under evaluative conditions. Companies lose their best candidates to the gate.</p>
-      </div>
-
-      <div class="fade-in fade-in-delay-3" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform 0.3s,border-color 0.3s;">
-        <div style="font-size:1.75rem;margin-bottom:12px;">&#129504;</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;">Mental Health</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">The resistance term r(t) maps directly onto social anxiety disorder, selective mutism, and PTSD expression barriers. Instead of treating "anxiety" as a vague label, EGC gives clinicians a measurable, targetable mechanism &mdash; the gate itself.</p>
-      </div>
-
-      <div class="fade-in fade-in-delay-1" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform 0.3s,border-color 0.3s;">
-        <div style="font-size:1.75rem;margin-bottom:12px;">&#127970;</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;">Workplace</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">Why does the smartest person in the meeting stay quiet? Psychological safety isn't just nice-to-have &mdash; it literally changes what knowledge can be expressed. EGC provides the formal explanation for why open cultures outperform hierarchical ones.</p>
-      </div>
-
-      <div class="fade-in fade-in-delay-2" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform 0.3s,border-color 0.3s;">
-        <div style="font-size:1.75rem;margin-bottom:12px;">&#9878;</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;">Equity</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">Marginalized groups face higher baseline r(t) due to systemic evaluative threat &mdash; racism, code-switching, stereotype threat. The framework provides a mechanism for why assessment equity matters at the cognitive level, not just the social one.</p>
-      </div>
-
-      <div class="fade-in fade-in-delay-3" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform 0.3s,border-color 0.3s;">
-        <div style="font-size:1.75rem;margin-bottom:12px;">&#127908;</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;">Performance</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">Stage fright, choking under pressure, the yips. Athletes, musicians, and speakers all experience the gate closing at critical moments. EGC formalizes what choking actually is &mdash; and the three types predict who is most vulnerable.</p>
-      </div>
-
-    </div>
-  </div>
-
-<div class="zone-divider"><span class="zone-label">For Researchers</span></div>
-
-<!-- ══════════════ METHODOLOGY ══════════════ -->
-<section id="methodology" style="border-top:1px solid var(--border);">
-  <div class="section-container">
-    <div class="section-label fade-in">How We Validate</div>
-    <h2 class="section-title fade-in">Rigorous methodology, open science</h2>
-    <p class="section-subtitle fade-in">Every variable is computed from raw text using standard NLP methods. No subjective judgment is involved in any calculation except the self-reported comfort rating.<br><span style="font-size:0.78rem;color:var(--text-muted);">Protocol designed by Bryan Leonard &amp; Brandyn Leonard &middot; Qira LLC &middot; 2026</span></p>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:32px;">
-
-      <!-- Independent Rater Validation -->
-      <div class="fade-in" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;">
-        <div style="font-size:1.5rem;margin-bottom:12px;">&#128269;</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:12px;">Independent Rater Protocol</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">To move EGC from descriptive framework to predictive model, we designed a blind validation protocol. Three independent raters &mdash; with no knowledge of EGC theory or computed scores &mdash; rate 50 text samples (randomized, anonymized) on three dimensions. Raters are told only: "We are studying how people write in different contexts and need human judges to rate writing quality." They are not told there are two conditions.</p>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;margin-bottom:16px;">
-          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin:0;"><strong style="color:var(--text-primary);">The falsifiable prediction:</strong><br>
-          EGC<sub>computed</sub> = &Phi; &middot; g(K) &middot; T &middot; (1 &minus; r) will significantly correlate with &Psi;<sub>rated</sub></p>
-        </div>
-        <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin:0;"><strong style="color:var(--text-secondary);">Secondary predictions:</strong><br>
-        &rarr; High-r subjects receive lower &Psi;<sub>rated</sub> regardless of K or T<br>
-        &rarr; Full EGC equation predicts &Psi;<sub>rated</sub> better than any single component<br>
-        &rarr; Suppressors show lower &Psi;<sub>rated</sub> in Task 2 than Task 1<br>
-        &rarr; Expanders show equal or higher &Psi;<sub>rated</sub> in Task 2</p>
-      </div>
-
-      <!-- Rater Criteria -->
-      <div class="fade-in" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;">
-        <div style="font-size:1.5rem;margin-bottom:12px;">&#128221;</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:12px;">Rating Instrument</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Each rater scores every writing sample (blind, randomized order) on three 1&ndash;10 scales. The composite mean constitutes &Psi;<sub>rated</sub>.</p>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="background:var(--bg-secondary);border-radius:8px;padding:14px;display:flex;justify-content:space-between;align-items:flex-start;">
-            <div><span style="font-size:0.85rem;color:var(--text-primary);font-weight:600;">Expression Quality</span><br><span style="font-size:0.78rem;color:var(--text-muted);">How well does this writing express a clear thought or feeling?</span></div>
-            <span style="font-family:'Playfair Display',serif;color:var(--teal);font-size:0.8rem;white-space:nowrap;margin-left:12px;">1&ndash;10</span>
-          </div>
-          <div style="background:var(--bg-secondary);border-radius:8px;padding:14px;display:flex;justify-content:space-between;align-items:flex-start;">
-            <div><span style="font-size:0.85rem;color:var(--text-primary);font-weight:600;">Meaning Transmission</span><br><span style="font-size:0.78rem;color:var(--text-muted);">How much does this feel like it captured what the person intended to say?</span></div>
-            <span style="font-family:'Playfair Display',serif;color:var(--teal);font-size:0.8rem;white-space:nowrap;margin-left:12px;">1&ndash;10</span>
-          </div>
-          <div style="background:var(--bg-secondary);border-radius:8px;padding:14px;display:flex;justify-content:space-between;align-items:flex-start;">
-            <div><span style="font-size:0.85rem;color:var(--text-primary);font-weight:600;">Coherence</span><br><span style="font-size:0.78rem;color:var(--text-muted);">How organized and internally consistent is this writing?</span></div>
-            <span style="font-family:'Playfair Display',serif;color:var(--teal);font-size:0.8rem;white-space:nowrap;margin-left:12px;">1&ndash;10</span>
-          </div>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:8px;padding:12px 14px;margin-top:10px;text-align:center;">
-          <span style="font-size:0.82rem;color:var(--text-muted);">&Psi;<sub>rated</sub> = mean(Expression Quality + Meaning Transmission + Coherence) / 10, normalized to [0,1]</span>
-        </div>
-        <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin-top:16px;margin-bottom:0;"><strong style="color:var(--text-secondary);">Rater requirements:</strong> Fluent English readers with at least undergraduate education. No prior exposure to EGC theory, the study design, or any computed scores. No personal relationship with the researchers. Ideal profiles: psychology graduate students, writing instructors, professional editors.</p>
-        <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin-top:8px;margin-bottom:0;"><strong style="color:var(--text-secondary);">Confirmation threshold:</strong> Pre-registered prediction of r &ge; 0.40, p &lt; 0.05 between EGC<sub>computed</sub> and &Psi;<sub>rated</sub>. Results reported regardless of outcome. Pre-registration on OSF before raters see any samples.</p>
-      </div>
-
+      <p>&Phi; inherits from Integrated Information Theory (Tononi) as a baseline measure of expressive capacity independent of context. <em>g</em>(<em>K</em>) = 4<em>K</em>(1&minus;<em>K</em>), developed by Brandyn Leonard, is parabolic and peaks at <em>K</em>=0.5 &mdash; meaning expression is maximized when knowledge is balanced rather than maximal. This predicts that both under-informed and over-specialized states collapse expression, a prediction not made by prior frameworks in emotion regulation or consciousness theory. <em>T</em>(<em>t</em>) is a Shannon-derived transmission fidelity term capturing temporal and channel alignment with the audience. <em>r</em>(<em>t</em>) operates bidirectionally: high <em>r</em> not only suppresses outgoing expression but prevents incoming information from updating <em>K</em>. This freezes the system: the individual cannot express and cannot learn. The bidirectional property has direct implications for stereotype threat, learned helplessness, and certain clinical presentations.</p>
     </div>
 
-    <!-- Rater Recruitment CTA -->
-    <div class="fade-in" style="background:linear-gradient(135deg,rgba(45,212,191,0.08),rgba(167,139,250,0.06));border:1px solid rgba(45,212,191,0.2);border-radius:16px;padding:32px;margin-top:24px;text-align:center;">
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:12px;">Become an Independent Rater</h3>
-      <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;margin-bottom:8px;">We are recruiting three independent raters to validate the EGC equation as a predictive model. You would read and rate 50 short writing samples in a single session (approximately 90 minutes).</p>
-      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;margin-bottom:20px;"><strong style="color:var(--text-secondary);">Requirements:</strong> Fluent English reader &middot; Undergraduate education or higher &middot; No prior exposure to EGC theory &middot; No relationship with researchers<br><strong style="color:var(--text-secondary);">Ideal backgrounds:</strong> Psychology graduate students, English literature graduates, professional editors, writing instructors<br><strong style="color:var(--text-secondary);">Please include in your email:</strong> Your name, educational background, any experience rating or assessing written work, and your availability</p>
-      <a href="mailto:bryanleonard@imagineqira.com?subject=EGC%20Rater%20Application&body=Hi%20Bryan%2C%0A%0AI%27m%20interested%20in%20serving%20as%20an%20independent%20rater%20for%20the%20EGC%20validation%20study.%0A%0AName%3A%20%0AEducational%20background%3A%20%0AExperience%20with%20writing%20assessment%3A%20%0AAvailability%3A%20%0A%0AThank%20you!" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:600;padding:16px 36px;border:none;border-radius:12px;cursor:pointer;text-decoration:none;background:linear-gradient(135deg,var(--teal-dim),var(--teal));color:var(--bg-primary);transition:all 0.3s;">Apply to be a Rater &rarr;</a>
-    </div>
+    <figure>
+      <canvas id="gk-graph" aria-label="Gate function g(K) = 4K(1-K) plotted against K from 0 to 1, a parabola peaking at K=0.5"></canvas>
+      <div class="caption"><strong>Figure 1.</strong> The gate function <em>g</em>(<em>K</em>) = 4<em>K</em>(1&minus;<em>K</em>). Expression output is maximal when knowledge integration <em>K</em> is balanced near 0.5 and collapses at both extremes.</div>
+    </figure>
 
-    <!-- Study Design Update -->
-    <div class="fade-in" style="background:var(--bg-card);border:1px solid rgba(45,212,191,0.2);border-radius:16px;padding:32px;margin-top:24px;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-        <span style="font-size:1.5rem;">&#128300;</span>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:0;">Study Design &mdash; Updated March 2026</h3>
-      </div>
-      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Following initial findings, the methodology was strengthened to include:</p>
-      <ul style="font-size:0.88rem;color:var(--text-secondary);line-height:2;padding-left:20px;margin-bottom:16px;">
-        <li>A 7-item resistance scale replacing the original single-item measure</li>
-        <li>Counterbalanced task order to control for order effects</li>
-        <li>Demographic data collection including identity threat context</li>
-        <li>Strengthened evaluative framing using social comparison</li>
-        <li>Full informed consent documentation</li>
-      </ul>
-      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;margin-bottom:8px;">Original findings have replicated under the improved design. Subjects are analyzed as two cohorts &mdash; pilot (N=40) and confirmatory (ongoing).</p>
-      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin:0;">This study is optimized for English-language responses. Cross-linguistic data is collected separately for future validation.</p>
-    </div>
+    <p><strong>Variables.</strong></p>
+    <ol class="numbered-defs">
+      <li><strong>&Phi;</strong> &mdash; baseline expressive capacity. The ceiling on what a person can articulate under ideal conditions. Inherited from IIT; treated as a per-subject constant for present purposes.</li>
+      <li><strong><em>g</em>(<em>K</em>(<em>t</em>))</strong> &mdash; the knowledge gate. Parabolic function 4<em>K</em>(1&minus;<em>K</em>) peaking at <em>K</em>=0.5. Predicts that over-specialization (<em>K</em>&nbsp;&rarr;&nbsp;1) collapses expression as surely as under-knowledge (<em>K</em>&nbsp;&rarr;&nbsp;0).</li>
+      <li><strong><em>T</em>(<em>t</em>)</strong> &mdash; temporal alignment. Shannon-derived channel fidelity between speaker and receiver at time <em>t</em>. Measured empirically via the composite <em>T</em>-score below.</li>
+      <li><strong><em>r</em>(<em>t</em>)</strong> &mdash; resistance to expression. The novel term. Gates bidirectionally: dampens output and blocks incoming information from updating <em>K</em>. Measured via the seven-item r_composite Likert instrument (v2) in the confirmatory cohort and a text-derived behavioral composite (v1) in the pilot cohort.</li>
+    </ol>
+  </section>
 
-    <!-- Variable Reference -->
-    <div class="fade-in" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-top:24px;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-        <span style="font-size:1.5rem;">&#128200;</span>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:0;">Complete Variable Definitions</h3>
-      </div>
-      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;margin-bottom:20px;">Every variable in EGC is computed from raw text using standard NLP. No black boxes.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:6px;">Shannon Entropy (H)</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;">H = &minus;&Sigma; p(w) &middot; log&#8322; p(w) over word frequency distribution. H = 0 means all words identical. Higher H = greater word diversity and information content. Observed range: 0.000 (complete linguistic collapse) to 6.890 bits.</p>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:6px;">Type-Token Ratio (TTR)</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;">TTR = unique words (types) / total words (tokens). TTR = 1.0 means every word unique. Naturally decreases with longer texts. Observed range: 0.028 (severe repetition) to 0.976.</p>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--purple);margin-bottom:6px;">Idea Density</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;">Content words (nouns, verbs, adjectives, adverbs) / total words. Higher = more meaning per word, more compact information-rich text. Observed range: 0.361 to 1.000.</p>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--purple);margin-bottom:6px;">Transmission Fidelity (T)</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;">T = 0.35(TTR<sub>norm</sub>) + 0.35(H<sub>norm</sub>) + 0.20(IdeaDensity) + 0.10(1 &minus; HedgeRate). Weighted composite [0,1]. Not yet validated against external criterion &mdash; rater protocol addresses this. Observed range: 0.457 to 0.916.</p>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#ff9f5a;margin-bottom:6px;">Resistance (r)</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;"><strong>Two instruments.</strong> The <strong>v2 instrument (r_composite)</strong> &mdash; used in the N=306 confirmatory cohort and reported here &mdash; is a validated 7-item Likert scale capturing self-monitoring, self-censorship, concern about judgment, and expression anxiety. The <strong>v1 instrument (text-derived r)</strong> &mdash; used in the N=38 pilot cohort &mdash; is a behavioral composite: r = mean(HedgeRate<sub>T2</sub> + (1 &minus; CompletionRate<sub>T2</sub>) + DiscomfortNorm) / 3, with DiscomfortNorm = (10 &minus; comfort) / 10. Observed v2 range: 0.000 to 0.810. The headline finding &mdash; Comfort &times; r = &minus;0.988 across 344 subjects with a 4.62-point comfort gap (low r = 9.16/10, high r = 4.54/10) &mdash; uses r_composite on the pooled dataset. A v2-only confirmatory analysis yields qualitatively identical results.</p>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#ff9f5a;margin-bottom:6px;">Knowledge State (K)</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;">K = mean(IdeaDensity<sub>T1</sub> + CompletionRate<sub>T1</sub> + ComfortNorm) / 3. Task 1 baseline used because it occurs before evaluative pressure. Observed range: 0.446 to 1.000, mean 0.869. Note: K is dynamic &mdash; K(t) can change between tasks. Current proxy measures K at baseline only.</p>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:6px;">Hedge Rate</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;">Count of hedging expressions (maybe, perhaps, might, could, I think, not sure, probably...) / total words. Higher = more uncertainty or self-qualification. Feeds into both T and r calculations.</p>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:6px;">Completion Rate</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;">Proportion of sentences with &ge;5 words / total sentences. Range [0,1]. Values below 1.0 indicate fragmented or incomplete expression. Observed range: 0.364 to 1.000.</p>
-        </div>
-        <div style="background:var(--bg-secondary);border-radius:10px;padding:16px;">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:6px;">Avg Sentence Length</div>
-          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin:0;">Mean words per sentence. Higher = longer, more complex sentences. Very high values (&gt;40) often indicate a single run-on sentence &mdash; a marker of linguistic disruption under pressure.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- §2 Method -->
+  <section class="paper-section" id="method">
+    <h2 class="section-h"><span class="sect-num">§2 &middot; Method</span>The two-task paradigm</h2>
 
-<!-- ══════════════ CASE STUDY: THE K-r FEEDBACK LOOP ══════════════ -->
-<section id="case-study" style="border-top:1px solid var(--border);">
-  <div class="section-container">
-    <div class="section-label fade-in">Case Study</div>
-    <h2 class="section-title fade-in">The K-r feedback loop &mdash; observed in real time</h2>
-    <p class="section-subtitle fade-in">When the framework was shared publicly on Reddit, a commenter inadvertently demonstrated the very mechanism they were trying to dismiss.</p>
+    <p>Participants complete a two-task writing paradigm. In <em>Task 1</em> (free condition), participants write about a personally meaningful place with no audience cues. In <em>Task 2</em> (evaluated condition), participants write on the same prompt after reading an evaluative framing. Condition order is counterbalanced across subjects.</p>
 
-    <div class="fade-in" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-top:24px;">
-      <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;margin-bottom:24px;">Brandyn Leonard's theoretical extension describes a <strong style="color:var(--text-primary);">bidirectional K-r feedback loop</strong>: high resistance (r) blocks not only outgoing expression but incoming information capable of updating the knowledge state (K). The following exchange demonstrates this mechanism across four consecutive responses.</p>
+    <p>Output is scored on a composite <em>T</em> measure derived from word count, type-token ratio, entropy, idea density, sentence count, and completion rate. <em>T</em>-drop is defined as <em>T</em><sub>1</sub> &minus; <em>T</em><sub>2</sub>; positive values indicate expression compression under evaluation.</p>
 
-      <!-- Exchange 1 -->
-      <div style="margin-bottom:20px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:8px;">Exchange 1 &mdash; Initial objection</div>
-        <div style="background:rgba(248,113,113,0.06);border-left:3px solid #f87171;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:8px;">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin:0;font-style:italic;">"Thanks for reinventing the wheel, many of us here are familiar with performance anxiety."</p>
-        </div>
-        <p style="font-size:0.78rem;color:var(--text-muted);margin:0;">EGC analysis: Immediately categorizes the framework as something already known. No engagement with specific claims.</p>
-      </div>
+    <p>Resistance is measured by <em>r_composite</em>, a seven-item Likert-scale instrument (v2 measurement cohort) capturing self-monitoring, self-censorship, concern about judgment, and expression anxiety. An earlier single-item version (v1) was used in the pilot cohort. Pooled analyses report both; v2-only confirmatory analyses yield qualitatively identical results.</p>
 
-      <!-- Exchange 2 -->
-      <div style="margin-bottom:20px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:8px;">Exchange 2 &mdash; Literature citation</div>
-        <div style="background:rgba(248,113,113,0.06);border-left:3px solid #f87171;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:8px;">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin:0;font-style:italic;">"This mechanism has been extensively described in the literature: Zajonc, Cottrell, Beilock, and Leary. Your terminology is the only new part."</p>
-        </div>
-        <div style="background:rgba(45,212,191,0.06);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:8px;">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin:0;">Response provided specific technical distinctions: T as a variable distinct from volume, the three-type classification from mathematical structure, entropy collapse data (42.7% T drop, Shannon entropy going to zero).</p>
-        </div>
-        <p style="font-size:0.78rem;color:var(--text-muted);margin:0;">EGC analysis: Resistance rising. Correct literature cited but used as dismissal rather than engagement. The K-r loop is forming.</p>
-      </div>
+    <p>Subjects self-report comfort on a ten-point scale at study completion, after both tasks and the resistance inventory. The live study runs at <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">theartofsound.github.io/egcstudy</a>.</p>
+  </section>
 
-      <!-- Exchange 3 -->
-      <div style="margin-bottom:20px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:8px;">Exchange 3 &mdash; Demand for formalism</div>
-        <div style="background:rgba(248,113,113,0.06);border-left:3px solid #f87171;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:8px;">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin:0;font-style:italic;">"Extraordinary mathematical claims require the basics: defined variables, units, equations, and measurement methods."</p>
-        </div>
-        <div style="background:rgba(45,212,191,0.06);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:8px;">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin:0;">Response provided: the full equation, formal definitions with units for K, r, T, and g(K), the exact Shannon entropy formula, all variable ranges, and a link to the open dataset.</p>
-        </div>
-        <p style="font-size:0.78rem;color:var(--text-muted);margin:0;">EGC analysis: Every requested item was provided. The commenter's K should have updated. Watch what happens.</p>
-      </div>
+  <!-- §3 Findings -->
+  <section class="paper-section" id="findings">
+    <h2 class="section-h"><span class="sect-num">§3 &middot; Findings at N=<span class="egc-n">344</span></span>Central predictions confirmed</h2>
 
-      <!-- Exchange 4 -->
-      <div style="margin-bottom:20px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:8px;">Exchange 4 &mdash; The loop closes</div>
-        <div style="background:rgba(248,113,113,0.08);border-left:3px solid #f87171;border-radius:0 8px 8px 0;padding:14px 18px;">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin:0;font-style:italic;">"This isn't a coherent equation. It's circular definitions, decorative equations, and impossible claims. I'm not going to keep engaging."</p>
-        </div>
-        <p style="font-size:0.78rem;color:var(--text-muted);margin:8px 0 0;">EGC analysis: <strong style="color:#f87171;">The K-r feedback loop completed.</strong> The commenter asked for formal definitions &rarr; received them &rarr; dismissed them without engaging with any specific variable or value. High r blocked the incoming information from updating K. The gate closed on intake, not just output.</p>
-      </div>
+    <h3 class="sub-h"><span class="sub-num">§3.1</span>Central prediction</h3>
+    <p>The inverse relationship between self-reported comfort and measured resistance (<em>r_proxy</em>) is <em>r</em> = <span class="egc-r">&minus;0.988</span> across all <span class="egc-n">344</span> subjects. This correlation has held from the earliest cohorts (N=9) through the current dataset. The strength of the effect is unusual for behavioral measures and suggests the two instruments &mdash; the Likert-based resistance scale and the single-item comfort rating &mdash; are capturing the same underlying construct from different angles.</p>
 
-      <!-- Summary -->
-      <div style="background:linear-gradient(135deg,rgba(45,212,191,0.08),rgba(167,139,250,0.06));border:1px solid rgba(45,212,191,0.2);border-radius:12px;padding:20px;margin-top:12px;">
-        <p style="font-size:0.88rem;color:var(--text-primary);line-height:1.8;margin:0;"><strong>What this demonstrates:</strong> The K-r feedback loop is not just a theoretical prediction. In this exchange, resistance (r) escalated across four turns despite increasingly detailed technical responses. The commenter's knowledge state (K) remained static &mdash; they never engaged with a single variable definition, data point, or formula. The gate closed on both intake and output simultaneously. This is exactly what the bidirectional K-r model predicts.</p>
-      </div>
-    </div>
-  </div>
+    <h3 class="sub-h"><span class="sub-num">§3.2</span>Response type distribution</h3>
+    <p>EGC predicts three distinct response profiles based on the sign and magnitude of <em>T</em>-drop. All three appear at stable proportions:</p>
+    <table class="academic">
+      <thead>
+        <tr><th>Type</th><th>Criterion</th><th class="num">N</th><th class="num">Percent</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Compressor</td><td class="lbl">|<em>T</em>-drop| &le; 0.02 &mdash; stable quality, volume drops</td><td class="num egc-comp-n">138</td><td class="num egc-comp-pct">40.1%</td></tr>
+        <tr><td>Suppressor</td><td class="lbl"><em>T</em>-drop &gt; 0.02 &mdash; quality drops under evaluation</td><td class="num egc-supp-n">103</td><td class="num egc-supp-pct">29.9%</td></tr>
+        <tr><td>Expander</td><td class="lbl"><em>T</em>-drop &lt; &minus;0.02 &mdash; quality rises under evaluation</td><td class="num egc-exp-n">103</td><td class="num egc-exp-pct">29.9%</td></tr>
+      </tbody>
+    </table>
+    <div class="caption"><strong>Table 1.</strong> Response type distribution across the full <span class="egc-n">344</span>-subject cohort. Live counts update from the study database.</div>
 
-<!-- ══════════════ RESEARCH ══════════════ -->
-<section id="research">
-  <div class="section-container">
-    <div class="section-label fade-in">The Research</div>
-    <h2 class="section-title fade-in">Read the science</h2>
-    <p class="section-subtitle fade-in">Open access. Peer review in progress.</p>
-    <div class="research-cards fade-in">
-      <div class="research-card">
-        <div class="research-icon">&#128220;</div>
-        <h3>Zenodo Preprint</h3>
-        <p>The formal EGC paper. Mathematical framework, falsifiable predictions, experimental protocol, and comparisons against IIT, GWT, panpsychism, and Orch-OR.</p>
-        <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener">Read on Zenodo</a>
-      </div>
-      <div class="research-card">
-        <div class="research-icon">&#128202;</div>
-        <h3>Live Study</h3>
-        <p>The ongoing EGC expression type study. Two writing tasks measuring how evaluative pressure modulates expressive output. Data collection in progress.</p>
-        <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">View the study</a>
-      </div>
-    </div>
-    <p class="research-note fade-in">Submitted to Journal of Consciousness Studies &amp; Neuroscience of Consciousness</p>
-  </div>
+    <p>That Expanders constitute nearly 30% of subjects is itself a finding. The classical stereotype threat literature and much of the suppression literature assume evaluative pressure uniformly degrades output. EGC predicts three distinct response profiles and all three appear at stable proportions.</p>
 
-<!-- ══════════════ WHERE THIS WORK LIVES ══════════════ -->
-<section id="submissions" style="border-top:1px solid var(--border);">
-  <div class="section-container">
-    <div class="section-label">Where This Work Lives</div>
-    <h2 class="section-title">Active Submissions &amp; Publications</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;" class="fade-in">
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:8px;">Published</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px;">Zenodo</h3>
-        <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">Three Cognitive Response Types paper. Permanent DOI established.</p>
-        <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener" style="font-size:0.85rem;color:var(--teal);text-decoration:none;">View publication &rarr;</a>
-      </div>
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--purple);margin-bottom:8px;">Under Review</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px;">Journal of Consciousness Studies</h3>
-        <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">Full EGC framework paper. Revised and resubmitted at editor's invitation.</p>
-      </div>
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--purple);margin-bottom:8px;">Under Review</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px;">Neuroscience of Consciousness</h3>
-        <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">Oxford University Press. Neurobiological resistance model paper.</p>
-      </div>
-      <!-- APF Visionary Grant card hidden pending confirmation of submission status.
-           If submitted, uncomment and keep. If not submitted, delete entire block.
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#ff9f5a;margin-bottom:8px;">Grant Submitted</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px;">APF Visionary Grant</h3>
-        <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">American Psychological Foundation. Expression equity research funding.</p>
-      </div>
-      -->
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;">
-        <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:8px;">In Active Engagement</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px;">Dr. Joshua Aronson</h3>
-        <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">NYU Steinhardt. Co-author, foundational 1995 stereotype threat paper.</p>
-      </div>
-    </div>
+    <h3 class="sub-h"><span class="sub-num">§3.3</span>Comfort gap</h3>
+    <p>Comfort ratings diverge sharply by resistance level:</p>
+    <table class="academic">
+      <thead>
+        <tr><th>Group</th><th class="num">N</th><th class="num">Mean comfort (of 10)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Low resistance (<em>r</em> &lt; 0.2)</td><td class="num">87</td><td class="num">9.16</td></tr>
+        <tr><td>High resistance (<em>r</em> &ge; 0.5)</td><td class="num">59</td><td class="num">4.54</td></tr>
+        <tr><td><strong>Gap</strong></td><td class="num">&mdash;</td><td class="num"><strong>4.62</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="caption"><strong>Table 2.</strong> Mean self-reported comfort at study completion, grouped by resistance band.</div>
 
-    <!-- Researcher Contact -->
-    <div style="text-align:center;margin-top:48px;" class="fade-in">
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:36px 32px;max-width:480px;margin:0 auto;">
-        <img src="data:image/jpeg;base64,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" alt="Bryan Leonard" style="width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid var(--teal);margin-bottom:16px;">
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:8px;">Contact the Researcher</h3>
-        <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">Bryan Leonard &mdash; independent researcher, expression science, consciousness theory</p>
-        <a href="mailto:bryanleonard@imagineqira.com" style="font-size:0.95rem;color:var(--teal);text-decoration:none;font-weight:500;">bryanleonard@imagineqira.com</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <p>This gap has been remarkably stable from N=9 (where it first appeared at 5.6 points) through N=<span class="egc-n">344</span> (4.62 points). The stability across dataset growth is itself evidence that the effect is structural, not artifact.</p>
 
-<!-- ══════════════ CITATION ══════════════ -->
-<div style="max-width:680px;margin:0 auto;padding:32px 24px 0;text-align:center;">
-  <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:24px;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--text-secondary);line-height:1.8;text-align:left;">
-    <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:12px;">Cite This Work</div>
-    Leonard, B., &amp; Leonard, B. (2026). Expression-Gated Consciousness: An empirical study of expressive suppression and psychological transparency. Preprint available at: <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener" style="color:var(--teal);">zenodo.org/records/19242315</a><br>
-    Contact: <a href="mailto:bryanleonard@imagineqira.com" style="color:var(--teal);">bryanleonard@imagineqira.com</a>
-  </div>
-</div>
+    <h3 class="sub-h"><span class="sub-num">§3.4</span>Zero-resistance suppressors &mdash; an anomaly worth explaining</h3>
+    <p>A subset of 22 subjects report zero resistance on the <em>r_composite</em> instrument. Of these, 9 nonetheless suppress expression under evaluation &mdash; and they do so at 33.4&times; the dataset mean (<em>T</em>-drop = 0.0711 versus 0.0021).</p>
 
-<!-- ══════════════ FOOTER ══════════════ -->
-<footer>
-  <div class="footer-content">
-    <div class="footer-links">
-      <a href="https://theartofsound.github.io/egcstudy/">Take the Study</a>
-      <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener">Zenodo</a>
-      <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">Live Study</a>
-    </div>
-    <p>&copy; 2026 Bryan Leonard &amp; Brandyn Leonard. All rights reserved.</p>
-    <p style="margin-top:6px;">Expression-Gated Consciousness (EGC) &mdash; Leonard &amp; Leonard, 2026</p>
-    <p style="margin-top:6px;font-size:0.75rem;color:var(--text-muted);">EGC framework, master equation &Psi;(t) = &Phi; &middot; g(K(t)) &middot; T(t) &middot; (1 &minus; r(t)), three-type classification system, and all associated methodology are the intellectual property of Bryan Leonard and Brandyn Leonard. Published under Zenodo DOI <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener" style="color:var(--teal);">10.5281/zenodo.19242315</a>.</p>
-    <p style="margin-top:12px;font-size:0.78rem;color:var(--text-muted);">Contact: <a href="mailto:bryanleonard@imagineqira.com" style="color:var(--teal);">bryanleonard@imagineqira.com</a></p>
-  </div>
-</footer>
+    <p>This is the anomaly. Conscious resistance as measured cannot account for the suppression these subjects exhibit. Either: (a) the <em>r</em> instrument misses a meaningful variance component in these individuals; (b) a second suppression mechanism operates below the threshold of conscious awareness; or (c) implicit processes (in the sense of Nosek, Greenwald, and others) are producing measurable output effects without producing measurable self-report.</p>
 
-<!-- ══════════════ AGREEMENT MODAL ══════════════ -->
-<div id="study-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
-  <div style="background:var(--bg-secondary,#111827);border:1px solid var(--border,#1e293b);border-radius:20px;padding:40px 36px;max-width:520px;width:100%;text-align:center;position:relative;animation:fadeUp 0.3s ease;">
-    <div style="width:64px;height:64px;border-radius:50%;background:rgba(45,212,191,0.1);border:2px solid var(--teal,#2dd4bf);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.5rem;">&#9998;</div>
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:12px;color:var(--text-primary,#f1f5f9);">Before you begin</h3>
-    <p style="font-size:0.95rem;color:var(--text-secondary,#94a3b8);line-height:1.8;margin-bottom:24px;">This study works best when you write naturally and honestly. There are no right or wrong answers &mdash; we're interested in <em>your</em> authentic expression, not performance.</p>
-    <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.15);border-radius:12px;padding:16px;text-align:left;margin-bottom:24px;">
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.88rem;color:var(--text-secondary,#94a3b8);line-height:1.6;">
-          <input type="checkbox" class="modal-check" style="margin-top:4px;accent-color:#2dd4bf;width:16px;height:16px;flex-shrink:0;">
-          I will write in my own words and express myself authentically
-        </label>
-        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.88rem;color:var(--text-secondary,#94a3b8);line-height:1.6;">
-          <input type="checkbox" class="modal-check" style="margin-top:4px;accent-color:#2dd4bf;width:16px;height:16px;flex-shrink:0;">
-          I understand there are no right or wrong answers
-        </label>
-        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.88rem;color:var(--text-secondary,#94a3b8);line-height:1.6;">
-          <input type="checkbox" class="modal-check" style="margin-top:4px;accent-color:#2dd4bf;width:16px;height:16px;flex-shrink:0;">
-          I will not use AI or external tools to write my responses
-        </label>
-      </div>
-    </div>
-    <button id="modal-proceed" disabled onclick="proceedToStudy()" style="width:100%;padding:16px;background:var(--border,#1e293b);border:none;border-radius:12px;color:var(--text-muted,#64748b);font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:600;cursor:not-allowed;transition:all 0.3s;">Check all to continue</button>
-    <button onclick="closeModal()" style="background:none;border:none;color:var(--text-muted,#64748b);font-size:0.82rem;cursor:pointer;margin-top:12px;padding:8px;font-family:'Inter',sans-serif;">Cancel</button>
-  </div>
-</div>
+    <p>Each of these interpretations has different implications. The third is most theoretically interesting and most directly connected to the automatic-versus-deliberate distinction in stereotype threat research. This is the finding prioritized for discussion with collaborators in the stereotype threat literature.</p>
+  </section>
 
-</div><!-- end main-content -->
+  <!-- §4 Sample Composition -->
+  <section class="paper-section" id="sample">
+    <h2 class="section-h"><span class="sect-num">§4 &middot; Sample Composition</span>Geographic, demographic, and instrument breakdown</h2>
+
+    <table class="academic">
+      <thead><tr><th>Dimension</th><th>Composition</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">Geographic</td><td>South Africa 73, United States 27, Egypt 22, India 20, Kenya 17; remaining across Mexico, Canada, Romania, Vietnam, Italy, Thailand, Pakistan, Nicaragua, and others (20+ countries total)</td></tr>
+        <tr><td class="lbl">Gender</td><td>Women 159 &middot; Men 136 &middot; Non-binary 4 &middot; Not reported 45</td></tr>
+        <tr><td class="lbl">Age</td><td>25&ndash;34: 147 &middot; 18&ndash;24: 65 &middot; 35&ndash;44: 57 &middot; 45&ndash;54: 21 &middot; 55+: 12 &middot; not reported 42</td></tr>
+        <tr><td class="lbl">Discrimination self-report</td><td>Yes 67 &middot; No 213 &middot; Prefer not to say 20 &middot; not asked 44</td></tr>
+        <tr><td class="lbl">Measurement cohort</td><td>v1 pilot (single-item <em>r</em>): 38 &middot; v2 confirmatory (7-item <em>r_composite</em>): 306</td></tr>
+        <tr><td class="lbl">Condition balance</td><td>A (free writing first): 180 &middot; B (evaluation first): 164</td></tr>
+      </tbody>
+    </table>
+    <div class="caption"><strong>Table 3.</strong> Full sample composition as of April 2026.</div>
+
+    <p>The framework appears to generalize cross-culturally, though formal cross-linguistic analysis is pending. The condition-balance figures reflect a correction from earlier exports.</p>
+  </section>
+
+  <!-- §5 Discussion -->
+  <section class="paper-section" id="discussion">
+    <h2 class="section-h"><span class="sect-num">§5 &middot; Discussion</span>Relationship to prior literature</h2>
+
+    <h3 class="sub-h"><span class="sub-num">§5.1</span>Stereotype threat</h3>
+    <p>The classical stereotype threat paradigm (Steele &amp; Aronson, 1995) established that evaluative context can suppress performance among individuals who identify with negatively stereotyped groups. EGC proposes that the mechanism underlying this effect is the resistance variable <em>r</em>(<em>t</em>), and that stereotype threat is one of several paths to elevated <em>r</em>.</p>
+
+    <p>The current data presents a more complex picture than a simple extension. Self-reported discrimination does not predict higher suppressor rates in this sample &mdash; if anything the direction is reversed (suppressor rate 23.9% in yes-discrimination subjects versus 31.0% in no-discrimination subjects). This may reflect: (a) a task that does not activate stereotype threat as Steele &amp; Aronson's ability-diagnostic framing did; (b) selection effects in who completes an internet-based study; (c) that self-report of discrimination and <em>r</em>(<em>t</em>) as measured here are not interchangeable. The zero-resistance suppressor finding (&sect;3.4) suggests the <em>r</em> instrument is capturing only part of the variance.</p>
+
+    <p>Calibration of <em>r</em> against the classical stereotype threat paradigm &mdash; or the design of a joint study &mdash; is the most scientifically productive next step.</p>
+
+    <h3 class="sub-h"><span class="sub-num">§5.2</span>Emotion regulation</h3>
+    <p>Gross's process model of emotion regulation distinguishes antecedent-focused strategies (reappraisal) from response-focused strategies (suppression). EGC frames <em>r</em>(<em>t</em>) as a formal account of the cost structure of suppression. The bidirectional property &mdash; that <em>r</em> gates incoming information as well as outgoing expression &mdash; extends Gross's framework and predicts that chronic suppression should produce knowledge-update deficits in addition to the well-documented affective costs.</p>
+
+    <h3 class="sub-h"><span class="sub-num">§5.3</span>Consciousness theory</h3>
+    <p>EGC does not propose a new theory of phenomenal consciousness. It proposes a formal account of a specific output process &mdash; the gate between internal states and expressed output. This is compatible with Integrated Information Theory's measurement of &Phi; (which EGC incorporates as baseline expressive capacity) and with predictive processing frameworks (which EGC extends by making the output gate an explicit term).</p>
+
+    <p>The observation that 29.9% of subjects are Expanders &mdash; improving expression under evaluation rather than degrading &mdash; is not predicted by suppression-focused frameworks. EGC predicts this as a natural consequence of low <em>r</em> and appropriate <em>T</em>(<em>t</em>): some individuals are better at articulating under pressure because their resistance is low and the evaluative framing serves as a temporal cue that supports rather than disrupts expression.</p>
+  </section>
+
+  <!-- §6 Applications -->
+  <section class="paper-section" id="applications">
+    <h2 class="section-h"><span class="sect-num">§6 &middot; Applications</span>Implications for practice</h2>
+    <p>If <em>r</em>(<em>t</em>) is measurable and responsive to context, it has practical implications across domains in which a gap between knowledge and expression produces measurable cost. In <em>education</em>, the parabolic <em>g</em>(<em>K</em>) predicts that both under-prepared and over-specialized students will fail to express under evaluation, and that standard assessment procedures systematically misrepresent the latter. In <em>hiring and workplace evaluation</em>, high-<em>r</em> candidates with high underlying &Phi; will be systematically under-selected by interview procedures that privilege composure over content. In <em>mental health</em>, the bidirectional property of <em>r</em> predicts that chronic suppression produces knowledge-update deficits &mdash; a testable prediction with implications for the treatment of trauma and anxiety presentations. In <em>equity research</em>, the framework offers a mechanism-level account of how evaluative environments reproduce group-level differences in measured performance independent of underlying capacity.</p>
+  </section>
+
+  <!-- §7 Methodology extended -->
+  <section class="paper-section" id="methodology">
+    <h2 class="section-h"><span class="sect-num">§7 &middot; Methodology</span>Scoring pipeline and rater validation</h2>
+
+    <p><strong>Scoring pipeline.</strong> Each participant response is scored on six composite measures: word count, type-token ratio (Herdan's C), Shannon entropy of word distribution, idea density (propositional count per 100 words), sentence count, and completion rate. These are combined into a single <em>T</em>-score normalized against a reference corpus. <em>T</em>-drop is computed as <em>T</em><sub>1</sub> &minus; <em>T</em><sub>2</sub>; positive values indicate compression under evaluation.</p>
+
+    <p><strong>Rater validation.</strong> An independent blind rating process is underway. Three research raters hired via Qira LLC beginning May 1, 2026 score participant responses against the scoring rubric independent of the automated <em>T</em>-score pipeline. Eighty texts are currently queued for rating; inter-rater reliability analysis will be reported in the peer-reviewed submission.</p>
+
+    <p><strong>Rater criteria.</strong> Raters hold a minimum of a bachelor's degree in a writing-intensive discipline (English, journalism, linguistics, psychology, or adjacent), pass a calibration round against a gold-standard reference set, and are blind to condition assignment and participant metadata.</p>
+
+    <p><strong>Data availability.</strong> All analyses reported here are reproducible from the live dataset. Qualified researchers may request access via the contact line below.</p>
+  </section>
+
+  <!-- §8 Status and Next Steps -->
+  <section class="paper-section" id="status">
+    <h2 class="section-h"><span class="sect-num">§8 &middot; Current Status and Next Steps</span>Publication, validation, collaboration</h2>
+
+    <h3 class="sub-h"><span class="sub-num">§8.1</span>Publication</h3>
+    <p>Paper submitted to <em>Neuroscience of Consciousness</em> (NCONSC-2026-103). Preprint available at <a href="https://zenodo.org/records/19242315" target="_blank" rel="noopener">zenodo.org/records/19242315</a> (currently reflects earlier N; updated preprint with N=<span class="egc-n">344</span> figures in preparation).</p>
+
+    <h3 class="sub-h"><span class="sub-num">§8.2</span>Rater validation</h3>
+    <p>Three research raters hired via Qira LLC begin independent blind scoring May 1, 2026. Eighty texts queued. Inter-rater reliability to be reported in the peer-reviewed submission.</p>
+
+    <h3 class="sub-h"><span class="sub-num">§8.3</span>Collaboration</h3>
+    <p><em>In active engagement with Dr. Joshua Aronson (New York University, Steinhardt), co-author of the foundational 1995 stereotype threat paper.</em> The zero-resistance suppressor finding (&sect;3.4) and the discrimination self-report pattern (&sect;5.1) are the specific points prioritized for discussion.</p>
+
+    <h3 class="sub-h"><span class="sub-num">§8.4</span>Infrastructure</h3>
+    <p>Live study continues at <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">theartofsound.github.io/egcstudy</a>. Individual response data viewable by qualified researchers via the admin dashboard. All analyses reported here are reproducible from the live dataset.</p>
+  </section>
+
+  <!-- References -->
+  <section class="references" id="references" aria-labelledby="ref-h">
+    <h2 id="ref-h">References</h2>
+    <ol>
+      <li>Steele, C. M., &amp; Aronson, J. (1995). Stereotype threat and the intellectual test performance of African Americans. <em>Journal of Personality and Social Psychology</em>, 69(5), 797&ndash;811.</li>
+      <li>Schmader, T., Johns, M., &amp; Forbes, C. (2008). An integrated process model of stereotype threat effects on performance. <em>Psychological Review</em>, 115(2), 336&ndash;356.</li>
+      <li>Gross, J. J. (1998). The emerging field of emotion regulation: An integrative review. <em>Review of General Psychology</em>, 2(3), 271&ndash;299.</li>
+      <li>Greenwald, A. G., &amp; Nosek, B. A. (2008). Attitudinal dissociation: What does it mean? In R. E. Petty, R. H. Fazio, &amp; P. Bri&ntilde;ol (Eds.), <em>Attitudes: Insights from the new implicit measures</em> (pp. 65&ndash;82). Psychology Press.</li>
+      <li>Tononi, G. (2004). An information integration theory of consciousness. <em>BMC Neuroscience</em>, 5(42).</li>
+      <li>Shannon, C. E. (1948). A mathematical theory of communication. <em>Bell System Technical Journal</em>, 27, 379&ndash;423.</li>
+      <li>Leonard, B., &amp; Leonard, B. (2026). <em>Expression-Gated Consciousness: A formal framework and empirical study</em> (preprint). Zenodo. <a href="https://doi.org/10.5281/zenodo.19242315" target="_blank" rel="noopener">doi.org/10.5281/zenodo.19242315</a></li>
+    </ol>
+  </section>
+
+  <!-- Participation card -->
+  <aside class="participation" id="participation">
+    <h2>Participation</h2>
+    <p>The study is currently open to adult participants globally. A full session takes approximately eight to ten minutes and consists of two short writing tasks and a brief questionnaire.</p>
+    <ul class="check-list">
+      <li><input type="checkbox" id="pc1" class="modal-check"><label for="pc1">I have read the <a href="https://theartofsound.github.io/egcstudy" target="_blank" rel="noopener">informed consent materials</a> and understand the study procedure.</label></li>
+      <li><input type="checkbox" id="pc2" class="modal-check"><label for="pc2">I am 18 years of age or older.</label></li>
+      <li><input type="checkbox" id="pc3" class="modal-check"><label for="pc3">I consent to anonymized data use for research and publication.</label></li>
+    </ul>
+    <a href="https://theartofsound.github.io/egcstudy" id="participate-btn" class="btn-primary" target="_blank" rel="noopener" aria-disabled="true" style="pointer-events:none;opacity:0.6;">Continue to Study</a>
+  </aside>
+
+  <footer class="colophon">
+    <div>Qira LLC &middot; Phoenix, Arizona &middot; April 2026</div>
+    <div><a href="mailto:bryanleonard@imagineqira.com">bryanleonard@imagineqira.com</a> &middot; <a href="https://doi.org/10.5281/zenodo.19242315" target="_blank" rel="noopener">DOI 10.5281/zenodo.19242315</a></div>
+    <div>&copy; 2026 Qira LLC. Research text released under CC BY 4.0.</div>
+  </footer>
+
+</article>
 
 <script>
-// ══════════════ AGREEMENT MODAL ══════════════
-function showStudyModal(e) {
-  if (e) e.preventDefault();
-  const modal = document.getElementById('study-modal');
-  modal.style.display = 'flex';
-  document.querySelectorAll('.modal-check').forEach(c => c.checked = false);
-  updateModalBtn();
-}
-
-function closeModal() {
-  document.getElementById('study-modal').style.display = 'none';
-}
-
-function updateModalBtn() {
-  const checks = document.querySelectorAll('.modal-check');
-  const allChecked = Array.from(checks).every(c => c.checked);
-  const btn = document.getElementById('modal-proceed');
-  if (allChecked) {
-    btn.disabled = false;
-    btn.style.background = 'linear-gradient(135deg, #14b8a6, #2dd4bf)';
-    btn.style.color = '#0a0e17';
-    btn.style.cursor = 'pointer';
-    btn.textContent = 'I\'m ready — take me to the study →';
-  } else {
-    btn.disabled = true;
-    btn.style.background = '#1e293b';
-    btn.style.color = '#64748b';
-    btn.style.cursor = 'not-allowed';
-    btn.textContent = 'Check all to continue';
-  }
-}
-
-function proceedToStudy() {
-  window.location.href = 'https://theartofsound.github.io/egcstudy/';
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Intercept all study links
-  document.querySelectorAll('a[href*="theartofsound.github.io/egcstudy"]').forEach(link => {
-    // Skip footer and nav links — only intercept CTA buttons
-    if (link.classList.contains('btn') || link.classList.contains('nav-cta')) {
-      link.addEventListener('click', showStudyModal);
-    }
-  });
-  // Checkbox listeners
-  document.querySelectorAll('.modal-check').forEach(c => {
-    c.addEventListener('change', updateModalBtn);
+// ══════════════ TRACK TOGGLE ══════════════
+document.querySelectorAll('.track-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const track = btn.dataset.track;
+    document.querySelectorAll('.track-toggle button').forEach(b => b.classList.toggle('active', b.dataset.track === track));
+    document.querySelectorAll('.track-content').forEach(c => c.classList.toggle('active', c.id === 'track-' + track));
   });
 });
+
+// ══════════════ PARTICIPATION MODAL CHECKS ══════════════
+function updateParticipateBtn() {
+  const checks = document.querySelectorAll('.modal-check');
+  const allChecked = Array.from(checks).every(c => c.checked);
+  const btn = document.getElementById('participate-btn');
+  if (!btn) return;
+  if (allChecked) {
+    btn.style.pointerEvents = 'auto';
+    btn.style.opacity = '1';
+    btn.setAttribute('aria-disabled', 'false');
+  } else {
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.6';
+    btn.setAttribute('aria-disabled', 'true');
+  }
+}
+document.querySelectorAll('.modal-check').forEach(c => c.addEventListener('change', updateParticipateBtn));
+
+// ══════════════ FIGURE 1: g(K) PARABOLA ══════════════
+(function drawGKGraph() {
+  const canvas = document.getElementById('gk-graph');
+  if (!canvas) return;
+  function render() {
+    const ratio = window.devicePixelRatio || 1;
+    const cssW = canvas.clientWidth || 560;
+    const cssH = canvas.clientHeight || 280;
+    canvas.width = cssW * ratio;
+    canvas.height = cssH * ratio;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(ratio, ratio);
+    ctx.clearRect(0, 0, cssW, cssH);
+
+    const pad = { top: 24, right: 24, bottom: 44, left: 48 };
+    const plotW = cssW - pad.left - pad.right;
+    const plotH = cssH - pad.top - pad.bottom;
+
+    // Axes
+    ctx.strokeStyle = '#1a1a1a';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, pad.top);
+    ctx.lineTo(pad.left, pad.top + plotH);
+    ctx.lineTo(pad.left + plotW, pad.top + plotH);
+    ctx.stroke();
+
+    // Ticks
+    ctx.fillStyle = '#5a5a5a';
+    ctx.font = '11px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    for (let k = 0; k <= 1.01; k += 0.25) {
+      const x = pad.left + k * plotW;
+      ctx.beginPath();
+      ctx.moveTo(x, pad.top + plotH);
+      ctx.lineTo(x, pad.top + plotH + 4);
+      ctx.stroke();
+      ctx.fillText(k.toFixed(2), x, pad.top + plotH + 18);
+    }
+    ctx.textAlign = 'right';
+    for (let g = 0; g <= 1.01; g += 0.25) {
+      const y = pad.top + plotH - g * plotH;
+      ctx.beginPath();
+      ctx.moveTo(pad.left - 4, y);
+      ctx.lineTo(pad.left, y);
+      ctx.stroke();
+      ctx.fillText(g.toFixed(2), pad.left - 8, y + 4);
+    }
+
+    // Axis labels
+    ctx.fillStyle = '#1a1a1a';
+    ctx.font = '12px "EB Garamond", serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('K  (knowledge integration)', pad.left + plotW / 2, cssH - 8);
+    ctx.save();
+    ctx.translate(14, pad.top + plotH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('g(K)  =  4K(1 − K)', 0, 0);
+    ctx.restore();
+
+    // Curve
+    ctx.strokeStyle = '#1e3a5f';
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    for (let i = 0; i <= 200; i++) {
+      const k = i / 200;
+      const g = 4 * k * (1 - k);
+      const x = pad.left + k * plotW;
+      const y = pad.top + plotH - g * plotH;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Peak marker
+    const peakX = pad.left + 0.5 * plotW;
+    const peakY = pad.top;
+    ctx.fillStyle = '#1e3a5f';
+    ctx.beginPath();
+    ctx.arc(peakX, peakY, 3.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#1a1a1a';
+    ctx.font = '11px "JetBrains Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('peak  K = 0.5', peakX + 8, peakY + 4);
+  }
+  render();
+  window.addEventListener('resize', render);
+})();
 
 // ══════════════ LIVE STATS FROM SUPABASE ══════════════
 (async function loadLiveStats() {
   const SUPA_URL = 'https://wgzopjrdnyazvhpklzhw.supabase.co';
   const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnem9wanJkbnlhenZocGtsemh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzOTc4NzcsImV4cCI6MjA4OTk3Mzg3N30.8dx5xWljLDZa5PMvE0Ps5q4ZEyuZgx_5FHVnD0WfBjs';
   try {
-    const res = await fetch(SUPA_URL + '/rest/v1/egc_responses?select=t1_wordcount,t2_wordcount,t1_score,t2_score,t_drop,is_excluded&order=created_at.desc&limit=500', {
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
-    });
-    if (!res.ok) return;
-    const allRows = await res.json();
+    // Paginate past Supabase's 1000-row cap
+    async function pullAll() {
+      const all = [];
+      let from = 0;
+      const chunk = 1000;
+      while (true) {
+        const r = await fetch(SUPA_URL + '/rest/v1/egc_responses?select=t_drop,r_proxy,comfort_rating,is_excluded', {
+          headers: {
+            'apikey': SUPA_KEY,
+            'Authorization': 'Bearer ' + SUPA_KEY,
+            'Range': from + '-' + (from + chunk - 1),
+            'Range-Unit': 'items'
+          }
+        });
+        if (!r.ok) break;
+        const part = await r.json();
+        if (!Array.isArray(part) || part.length === 0) break;
+        all.push(...part);
+        if (part.length < chunk) break;
+        from += chunk;
+      }
+      return all;
+    }
+    const allRows = await pullAll();
     const rows = allRows.filter(r => !r.is_excluded);
     const n = rows.length;
     if (n === 0) return;
 
-    // Calculate real stats
-    let volDrops = 0, totalVolPct = 0, compressors = 0, expanders = 0, suppressors = 0;
+    let comp = 0, exp = 0, supp = 0;
+    const rvals = [], cvals = [];
     rows.forEach(r => {
-      const wc1 = r.t1_wordcount || 0, wc2 = r.t2_wordcount || 0;
       const td = parseFloat(r.t_drop) || 0;
-      if (wc2 < wc1) volDrops++;
-      totalVolPct += wc1 > 0 ? ((wc1 - wc2) / wc1 * 100) : 0;
-      if (Math.abs(td) <= 0.02) compressors++;
-      else if (td < -0.02) expanders++;
-      else suppressors++;
-    });
-    const volPct = Math.round(volDrops / n * 100);
-    const avgRed = Math.abs(totalVolPct / n).toFixed(1);
-
-    // Update counters
-    document.querySelectorAll('.counter').forEach(el => {
-      const label = el.closest('.stat-item');
-      if (!label) return;
-      const statLabel = label.querySelector('.stat-label');
-      if (!statLabel) return;
-      const text = statLabel.textContent.toLowerCase();
-      if (text.includes('participant')) { el.dataset.target = n; }
+      const rv = parseFloat(r.r_proxy) || 0;
+      const cv = parseFloat(r.comfort_rating) || 0;
+      rvals.push(rv);
+      cvals.push(cv);
+      if (Math.abs(td) <= 0.02) comp++;
+      else if (td < -0.02) exp++;
+      else supp++;
     });
 
-    // Update type stats
-    const typeStats = document.querySelectorAll('.type-stat');
-    if (typeStats[0]) typeStats[0].textContent = Math.round(compressors/n*100) + '% of participants (' + compressors + '/' + n + ')';
-    if (typeStats[1]) typeStats[1].textContent = Math.round(expanders/n*100) + '% of participants (' + expanders + '/' + n + ')';
-    if (typeStats[2]) typeStats[2].textContent = Math.round(suppressors/n*100) + '% of participants (' + suppressors + '/' + n + ')';
-  } catch(e) { /* fail silently, keep hardcoded defaults */ }
-})();
-</script>
-
-<script>
-// ══════════════ GATE PARTICLES ══════════════
-(function initGateParticles() {
-  const canvas = document.getElementById('gateParticles');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h, particles = [];
-  const NUM = 60;
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-
-  function createParticle() {
-    return {
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 2 + 0.5,
-      o: Math.random() * 0.4 + 0.1,
-    };
-  }
-
-  function init() {
-    resize();
-    particles = [];
-    for (let i = 0; i < NUM; i++) particles.push(createParticle());
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    for (const p of particles) {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0) p.x = w;
-      if (p.x > w) p.x = 0;
-      if (p.y < 0) p.y = h;
-      if (p.y > h) p.y = 0;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(45, 212, 191, ${p.o})`;
-      ctx.fill();
+    // Pearson r: comfort × r_proxy
+    const mR = rvals.reduce((a, b) => a + b, 0) / n;
+    const mC = cvals.reduce((a, b) => a + b, 0) / n;
+    let num = 0, dA = 0, dB = 0;
+    for (let i = 0; i < n; i++) {
+      const a = rvals[i] - mR, b = cvals[i] - mC;
+      num += a * b; dA += a * a; dB += b * b;
     }
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(45, 212, 191, ${0.06 * (1 - dist / 120)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-    requestAnimationFrame(draw);
-  }
+    const pr = (dA > 0 && dB > 0) ? (num / Math.sqrt(dA * dB)) : null;
+    const prText = pr === null ? '\u2014' : (pr < 0 ? '\u2212' + Math.abs(pr).toFixed(3) : pr.toFixed(3));
 
-  init();
-  window.addEventListener('resize', resize);
-  draw();
-})();
+    // Update all live elements
+    document.querySelectorAll('.egc-n').forEach(el => el.textContent = n);
+    document.querySelectorAll('.egc-r').forEach(el => el.textContent = prText);
+    document.querySelectorAll('.egc-comp-n').forEach(el => el.textContent = comp);
+    document.querySelectorAll('.egc-supp-n').forEach(el => el.textContent = supp);
+    document.querySelectorAll('.egc-exp-n').forEach(el => el.textContent = exp);
+    document.querySelectorAll('.egc-comp-pct').forEach(el => el.textContent = (comp / n * 100).toFixed(1) + '%');
+    document.querySelectorAll('.egc-supp-pct').forEach(el => el.textContent = (supp / n * 100).toFixed(1) + '%');
+    document.querySelectorAll('.egc-exp-pct').forEach(el => el.textContent = (exp / n * 100).toFixed(1) + '%');
 
-// ══════════════ HERO DOT GRID ══════════════
-let heroAnimId = null;
-function initHero() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas || heroAnimId) return;
-  const ctx = canvas.getContext('2d');
-  let w, h;
-  const spacing = 40;
-  let mouse = { x: -1000, y: -1000 };
-
-  function resize() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    w = canvas.width = rect.width;
-    h = canvas.height = rect.height;
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  canvas.parentElement.addEventListener('mousemove', (e) => {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-
-  canvas.parentElement.addEventListener('mouseleave', () => {
-    mouse.x = -1000;
-    mouse.y = -1000;
-  });
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    const cols = Math.ceil(w / spacing) + 1;
-    const rows = Math.ceil(h / spacing) + 1;
-    const time = Date.now() * 0.001;
-
-    for (let i = 0; i < cols; i++) {
-      for (let j = 0; j < rows; j++) {
-        const x = i * spacing;
-        const y = j * spacing;
-        const dx = x - mouse.x;
-        const dy = y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = 150;
-
-        let r = 1;
-        let opacity = 0.08 + Math.sin(time + i * 0.3 + j * 0.2) * 0.03;
-
-        if (dist < maxDist) {
-          const factor = 1 - dist / maxDist;
-          r = 1 + factor * 2.5;
-          opacity = 0.08 + factor * 0.3;
-        }
-
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(45, 212, 191, ${opacity})`;
-        ctx.fill();
-      }
-    }
-    heroAnimId = requestAnimationFrame(draw);
-  }
-
-  draw();
-
-  // Start typing effect
-  startTyping();
-}
-
-// ══════════════ TYPING EFFECT ══════════════
-function startTyping() {
-  const el = document.getElementById('heroSubtitle');
-  if (!el) return;
-  const text = "Why you know more than you say \u2014 and the science behind it";
-  let i = 0;
-
-  function type() {
-    if (i <= text.length) {
-      el.innerHTML = text.substring(0, i) + '<span class="cursor"></span>';
-      i++;
-      setTimeout(type, 35 + Math.random() * 25);
-    } else {
-      // Remove cursor after a pause
-      setTimeout(() => {
-        el.innerHTML = text;
-      }, 2000);
-    }
-  }
-
-  setTimeout(type, 800);
-}
-
-// ══════════════ GATE CHECK ══════════════
-(function() {
-  const completed = localStorage.getItem('egc_study_completed');
-  const urlParams = new URLSearchParams(window.location.search);
-  const hasAccess = completed || urlParams.get('access') === 'granted';
-  const gateWall = document.getElementById('gate-wall');
-  const mainContent = document.getElementById('main-content');
-  if (hasAccess) {
-    gateWall.style.display = 'none';
-    if (mainContent) mainContent.style.display = 'block';
-    initHero();
-  } else {
-    gateWall.style.display = 'flex';
-    if (mainContent) mainContent.style.display = 'none';
+    const now = new Date();
+    const ts = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' +
+               now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' local';
+    document.querySelectorAll('.egc-refresh').forEach(el => el.textContent = ts);
+  } catch (e) {
+    // Fail silently; static defaults remain
   }
 })();
-
-// ══════════════ MOBILE NAV ══════════════
-function toggleNav() {
-  document.getElementById('navLinks').classList.toggle('open');
-}
-
-// ══════════════ TRACK SWITCH ══════════════
-function switchTrack(track) {
-  document.querySelectorAll('.track-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.track-content').forEach(c => c.classList.remove('active'));
-  document.getElementById('track-' + track).classList.add('active');
-  event.target.classList.add('active');
-
-  // Draw graph if switching to technical
-  if (track === 'technical') {
-    setTimeout(drawGKGraph, 100);
-  }
-}
-
-// ══════════════ g(K) GRAPH ══════════════
-function drawGKGraph() {
-  const canvas = document.getElementById('gk-graph');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
-  ctx.scale(dpr, dpr);
-  const w = rect.width;
-  const h = rect.height;
-  const pad = { top: 20, right: 30, bottom: 40, left: 50 };
-  const plotW = w - pad.left - pad.right;
-  const plotH = h - pad.top - pad.bottom;
-
-  // Background grid
-  ctx.strokeStyle = 'rgba(148, 163, 184, 0.08)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i <= 4; i++) {
-    const y = pad.top + (plotH / 4) * i;
-    ctx.beginPath();
-    ctx.moveTo(pad.left, y);
-    ctx.lineTo(pad.left + plotW, y);
-    ctx.stroke();
-  }
-
-  // Axes
-  ctx.strokeStyle = 'rgba(148, 163, 184, 0.2)';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(pad.left, pad.top);
-  ctx.lineTo(pad.left, pad.top + plotH);
-  ctx.lineTo(pad.left + plotW, pad.top + plotH);
-  ctx.stroke();
-
-  // Labels
-  ctx.fillStyle = '#64748b';
-  ctx.font = '11px Inter, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('0', pad.left, pad.top + plotH + 20);
-  ctx.fillText('0.5', pad.left + plotW / 2, pad.top + plotH + 20);
-  ctx.fillText('1', pad.left + plotW, pad.top + plotH + 20);
-  ctx.fillText('Conviction (K)', pad.left + plotW / 2, pad.top + plotH + 36);
-
-  ctx.save();
-  ctx.translate(14, pad.top + plotH / 2);
-  ctx.rotate(-Math.PI / 2);
-  ctx.textAlign = 'center';
-  ctx.fillText('g(K)', 0, 0);
-  ctx.restore();
-
-  ctx.textAlign = 'right';
-  ctx.fillText('0', pad.left - 8, pad.top + plotH + 4);
-  ctx.fillText('1', pad.left - 8, pad.top + 4);
-
-  // Draw curve with animation
-  const gradient = ctx.createLinearGradient(pad.left, 0, pad.left + plotW, 0);
-  gradient.addColorStop(0, '#8b5cf6');
-  gradient.addColorStop(0.5, '#2dd4bf');
-  gradient.addColorStop(1, '#8b5cf6');
-
-  ctx.strokeStyle = gradient;
-  ctx.lineWidth = 3;
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-
-  const steps = 100;
-  for (let i = 0; i <= steps; i++) {
-    const k = i / steps;
-    const gk = 4 * k * (1 - k);
-    const x = pad.left + k * plotW;
-    const y = pad.top + plotH - gk * plotH;
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  }
-  ctx.stroke();
-
-  // Fill under curve
-  ctx.lineTo(pad.left + plotW, pad.top + plotH);
-  ctx.lineTo(pad.left, pad.top + plotH);
-  ctx.closePath();
-  const fillGrad = ctx.createLinearGradient(0, pad.top, 0, pad.top + plotH);
-  fillGrad.addColorStop(0, 'rgba(45, 212, 191, 0.12)');
-  fillGrad.addColorStop(1, 'rgba(45, 212, 191, 0)');
-  ctx.fillStyle = fillGrad;
-  ctx.fill();
-
-  // Peak marker
-  const peakX = pad.left + 0.5 * plotW;
-  const peakY = pad.top;
-  ctx.beginPath();
-  ctx.arc(peakX, peakY, 5, 0, Math.PI * 2);
-  ctx.fillStyle = '#2dd4bf';
-  ctx.fill();
-
-  ctx.fillStyle = '#94a3b8';
-  ctx.font = '10px Inter, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('Peak at K = 0.5', peakX, peakY - 10);
-}
-
-// ══════════════ COUNTER ANIMATION ══════════════
-function animateCounters() {
-  document.querySelectorAll('.counter').forEach(counter => {
-    if (counter.dataset.animated) return;
-    const target = parseFloat(counter.dataset.target);
-    const isDecimal = counter.dataset.decimal === 'true';
-    const duration = 2000;
-    const startTime = performance.now();
-
-    function update(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
-      const current = eased * target;
-
-      if (isDecimal) {
-        counter.textContent = current.toFixed(1);
-      } else {
-        counter.textContent = Math.floor(current);
-      }
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        counter.dataset.animated = 'true';
-      }
-    }
-
-    requestAnimationFrame(update);
-  });
-}
-
-// ══════════════ EMAIL SUBSCRIBE ══════════════
-function handleSubscribe(e) {
-  e.preventDefault();
-  const email = document.getElementById('emailInput').value;
-  if (!email) return;
-
-  const subscribers = JSON.parse(localStorage.getItem('egc_subscribers') || '[]');
-  subscribers.push({ email, timestamp: new Date().toISOString() });
-  localStorage.setItem('egc_subscribers', JSON.stringify(subscribers));
-
-  document.getElementById('emailInput').value = '';
-  document.getElementById('subscribeSuccess').classList.add('visible');
-  setTimeout(() => {
-    document.getElementById('subscribeSuccess').classList.remove('visible');
-  }, 4000);
-}
-
-// ══════════════ SCROLL ANIMATIONS ══════════════
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-
-      // Trigger counters when stats section is visible
-      if (entry.target.closest('#stats')) {
-        animateCounters();
-      }
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// ══════════════ CLOSE NAV ON CLICK ══════════════
-document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
-
-// ══════════════ SCROLL SPY — ACTIVE NAV ══════════════
-const sections = document.querySelectorAll('section[id], div.hero');
-const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(sec => {
-    const top = sec.offsetTop - 120;
-    if (window.pageYOffset >= top) current = sec.getAttribute('id');
-  });
-  navAnchors.forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-  });
-}, { passive: true });
-
-// ══════════════ NAV HIDE ON SCROLL DOWN ══════════════
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  const currentScroll = window.pageYOffset;
-  if (currentScroll > lastScroll && currentScroll > 100) {
-    nav.style.transform = 'translateY(-100%)';
-  } else {
-    nav.style.transform = 'translateY(0)';
-  }
-  lastScroll = currentScroll;
-}, { passive: true });
 </script>
 
 </body>
